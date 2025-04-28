@@ -1,130 +1,150 @@
-import { motion } from 'framer-motion'
-import { useRef, useState } from 'react'
-import emailjs from '@emailjs/browser'
+// src/components/Contact.jsx
+import { useState } from 'react';
+import separatorImage from '../assets/separator.png';
+import './Contact.css';
 
-const Contact = () => {
-    const form = useRef()
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [submitMessage, setSubmitMessage] = useState('')
+function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
 
-    const sendEmail = (e) => {
-        e.preventDefault()
-        setIsSubmitting(true)
+    const [errors, setErrors] = useState({});
 
-        emailjs.sendForm(
-            'YOUR_SERVICE_ID',
-            'YOUR_TEMPLATE_ID',
-            form.current,
-            'YOUR_PUBLIC_KEY'
-        )
-            .then((result) => {
-                console.log(result.text)
-                setSubmitMessage('Message sent successfully!')
-                form.current.reset()
-            }, (error) => {
-                console.log(error.text)
-                setSubmitMessage('Failed to send message. Please try again.')
-            })
-            .finally(() => {
-                setIsSubmitting(false)
-                setTimeout(() => setSubmitMessage(''), 5000)
-            })
-    }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+
+        // Clear error when field is edited
+        if (errors[name]) {
+            setErrors(prev => ({
+                ...prev,
+                [name]: ''
+            }));
+        }
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!formData.name.trim()) {
+            newErrors.name = 'Name is required';
+        }
+
+        if (!formData.email.trim()) {
+            newErrors.email = 'Email is required';
+        } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+            newErrors.email = 'Email is invalid';
+        }
+
+        if (!formData.message.trim()) {
+            newErrors.message = 'Message is required';
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (validateForm()) {
+            // Submit the form
+            console.log('Form submitted:', formData);
+
+            // Clear form
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                message: ''
+            });
+
+            // Show success message (would be implemented with proper state management)
+            alert('Message sent successfully!');
+        }
+    };
 
     return (
-        <section id="contact" className="py-20 bg-gray-100">
-            <div className="container mx-auto px-4">
-                <h2 className="section-header mb-16">Contact</h2>
+        <section className="contact" id="contact">
+            <div className="container">
+                <div className="section-header-box">
+                    <h2>CONTACT</h2>
+                </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                    className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg"
-                >
-                    <p className="font-opensans text-lg mb-8 text-center">
-                        Interested in working together or have any questions? Feel free to reach out!
-                    </p>
+                <p className="contact-intro">
+                    I'd love to hear from you! Whether you have a question, proposal, or just want to say hello, fill out the form below and I'll get back to you as soon as possible.
+                </p>
 
-                    <form ref={form} onSubmit={sendEmail} className="space-y-6">
-                        <div>
-                            <label htmlFor="name" className="font-montserrat font-bold text-sm uppercase tracking-wider block mb-2">
-                                Enter Your Name*
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="user_name"
-                                className="input-field"
-                                required
-                            />
-                        </div>
+                <div className="separator">
+                    <img src={separatorImage} alt="Separator" />
+                </div>
 
-                        <div>
-                            <label htmlFor="email" className="font-montserrat font-bold text-sm uppercase tracking-wider block mb-2">
-                                Enter Your Email*
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="user_email"
-                                className="input-field"
-                                required
-                            />
-                        </div>
+                <form className="contact-form" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <div className="form-indicator"></div>
+                        <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="ENTER YOUR NAME*"
+                            className={errors.name ? 'error' : ''}
+                        />
+                        {errors.name && <span className="error-message">{errors.name}</span>}
+                    </div>
 
-                        <div>
-                            <label htmlFor="phone" className="font-montserrat font-bold text-sm uppercase tracking-wider block mb-2">
-                                Phone Number
-                            </label>
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="user_phone"
-                                className="input-field"
-                            />
-                        </div>
+                    <div className="form-group">
+                        <div className="form-indicator"></div>
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="ENTER YOUR EMAIL*"
+                            className={errors.email ? 'error' : ''}
+                        />
+                        {errors.email && <span className="error-message">{errors.email}</span>}
+                    </div>
 
-                        <div>
-                            <label htmlFor="message" className="font-montserrat font-bold text-sm uppercase tracking-wider block mb-2">
-                                Your Message*
-                            </label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                rows="5"
-                                className="input-field"
-                                required
-                            ></textarea>
-                        </div>
+                    <div className="form-group">
+                        <div className="form-indicator"></div>
+                        <input
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="PHONE NUMBER"
+                        />
+                    </div>
 
-                        <div className="flex justify-center">
-                            <motion.button
-                                type="submit"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                disabled={isSubmitting}
-                                className="font-montserrat font-bold uppercase tracking-wider bg-black text-white px-8 py-3 rounded-full flex items-center gap-4"
-                            >
-                                {isSubmitting ? 'Sending...' : 'Submit'}
-                                <div className="flex">
-                                    <div className="w-6 h-0.5 bg-white"></div>
-                                    <div className="w-6 h-0.5 bg-white"></div>
-                                </div>
-                            </motion.button>
-                        </div>
+                    <div className="form-group">
+                        <div className="form-indicator"></div>
+                        <textarea
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            placeholder="YOUR MESSAGE*"
+                            rows="6"
+                            className={errors.message ? 'error' : ''}
+                        ></textarea>
+                        {errors.message && <span className="error-message">{errors.message}</span>}
+                    </div>
 
-                        {submitMessage && (
-                            <p className={`text-center font-montserrat ${submitMessage.includes('successfully') ? 'text-green-600' : 'text-red-600'}`}>
-                                {submitMessage}
-                            </p>
-                        )}
-                    </form>
-                </motion.div>
+                    <button type="submit" className="submit-btn">
+                        <span className="line"></span>
+                        <span>SUBMIT</span>
+                        <span className="line"></span>
+                    </button>
+                </form>
             </div>
         </section>
-    )
+    );
 }
 
-export default Contact
+export default Contact;

@@ -1,79 +1,54 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+// src/components/Navbar.jsx
+import { useState } from 'react';
+import logo from '../assets/logo.svg';
+import './Navbar.css';
 
-const Navbar = ({ isScrolled }) => {
-    const [activeSection, setActiveSection] = useState('home')
+function Navbar({ scrolled }) {
+    const [activeSection, setActiveSection] = useState('about');
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = ['home', 'about', 'skills', 'portfolio', 'contact']
-            const scrollPosition = window.scrollY + 200
-
-            for (const section of sections) {
-                const element = document.getElementById(section)
-                if (element) {
-                    const offsetTop = element.offsetTop
-                    const offsetHeight = element.offsetHeight
-
-                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                        setActiveSection(section)
-                        break
-                    }
-                }
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
-
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId)
+    const handleNavClick = (section) => {
+        setActiveSection(section);
+        const element = document.getElementById(section);
         if (element) {
-            window.scrollTo({
-                top: element.offsetTop - 100,
-                behavior: 'smooth'
-            })
+            element.scrollIntoView({ behavior: 'smooth' });
         }
-    }
+    };
 
     return (
-        <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.5 }}
-            className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black py-2 shadow-lg' : 'bg-transparent py-4'
-                }`}
-        >
-            <div className="container mx-auto px-4 flex justify-between items-center">
-                <div className="text-white font-montserrat font-bold text-xl">
-                    Oshada Pramod
+        <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
+            <div className="container navbar-container">
+                <div className="logo">
+                    <img src={logo} alt="Tomasz Gajda Logo" />
                 </div>
-
-                <div className="hidden md:flex space-x-6">
-                    {['about', 'skills', 'portfolio', 'contact'].map((item) => (
-                        <button
-                            key={item}
-                            onClick={() => scrollToSection(item)}
-                            className={`font-montserrat font-bold uppercase tracking-wider transition-colors ${activeSection === item ? 'text-white' : 'text-gray-400 hover:text-white'
-                                }`}
-                        >
-                            {item.charAt(0).toUpperCase() + item.slice(1)}
-                        </button>
-                    ))}
-
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => scrollToSection('contact')}
-                        className="font-montserrat font-bold uppercase tracking-wider bg-white text-black px-6 py-2 rounded-full"
+                <div className="nav-links">
+                    <button
+                        className={`nav-item ${activeSection === 'about' ? 'active' : ''}`}
+                        onClick={() => handleNavClick('about')}
                     >
-                        Contact Me
-                    </motion.button>
+                        About me
+                    </button>
+                    <button
+                        className={`nav-item ${activeSection === 'skills' ? 'active' : ''}`}
+                        onClick={() => handleNavClick('skills')}
+                    >
+                        Skills
+                    </button>
+                    <button
+                        className={`nav-item ${activeSection === 'portfolio' ? 'active' : ''}`}
+                        onClick={() => handleNavClick('portfolio')}
+                    >
+                        Portfolio
+                    </button>
+                    <button
+                        className="nav-item contact-btn"
+                        onClick={() => handleNavClick('contact')}
+                    >
+                        CONTACT ME
+                    </button>
                 </div>
             </div>
-        </motion.nav>
-    )
+        </nav>
+    );
 }
 
-export default Navbar
+export default Navbar;

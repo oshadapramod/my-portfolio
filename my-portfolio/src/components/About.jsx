@@ -1,55 +1,74 @@
-import { motion } from 'framer-motion'
+// src/components/About.jsx
+import {
+    FaHtml5, FaCss3Alt, FaSass, FaJs,
+    FaReact, FaBootstrap, FaGitAlt, FaFigma,
+    FaNodeJs, FaDatabase
+} from 'react-icons/fa';
+import { SiTypescript, SiMongodb } from 'react-icons/si';
+import './About.css';
 
-const About = () => {
+function About() {
+    const skillCategories = [
+        {
+            title: "USING NOW:",
+            skills: [
+                { icon: <FaHtml5 />, name: "HTML5" },
+                { icon: <FaCss3Alt />, name: "CSS3" },
+                { icon: <FaSass />, name: "SASS" },
+                { icon: <FaJs />, name: "JAVASCRIPT" },
+                { icon: <FaReact />, name: "REACT" },
+                { icon: <FaBootstrap />, name: "BOOTSTRAP" },
+                { icon: <FaGitAlt />, name: "GIT" },
+                { icon: <FaFigma />, name: "FIGMA" }
+            ]
+        },
+        {
+            title: "LEARNING:",
+            skills: [
+                { icon: <FaNodeJs />, name: "NODEJS" },
+                { icon: <FaDatabase />, name: "MySQL" },
+                { icon: <SiMongodb />, name: "MONGODB" },
+                { icon: <SiTypescript />, name: "TYPESCRIPT" }
+            ]
+        },
+        {
+            title: "OTHER SKILLS:",
+            skills: [
+                { icon: null, name: "ANGIELSKI C1/C2" },
+                { icon: null, name: "HISZPAŃSKI B1/B2" },
+                { icon: null, name: "C++" },
+                { icon: null, name: "C" }
+            ]
+        }
+    ];
+
     return (
-        <section id="about" className="py-20 bg-gray-100">
-            <div className="container mx-auto px-4">
-                <h2 className="section-header mb-16">About Me</h2>
+        <section className="about" id="skills">
+            <div className="container">
+                <div className="section-header-box">
+                    <h2 className="section-title">SKILLS</h2>
+                </div>
 
-                <div className="flex flex-col lg:flex-row items-center gap-12">
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
-                        viewport={{ once: true }}
-                        className="lg:w-1/2"
-                    >
-                        <div className="bg-white p-8 rounded-lg shadow-lg">
-                            <p className="font-opensans text-lg mb-6">
-                                I'm a Computer Engineering Undergraduate at the University of Jaffna with a passion for
-                                Blockchain, Web Development, and Graphic Design. I'm currently exploring Zero-Knowledge
-                                Proofs (ZKP) for privacy applications in blockchain technology.
-                            </p>
-                            <p className="font-opensans text-lg mb-6">
-                                As a tech enthusiast, I love exploring new technologies and sharing knowledge with others.
-                                My goal is to create innovative solutions that solve real-world problems while maintaining
-                                a strong focus on user experience and performance.
-                            </p>
-                            <p className="font-opensans text-lg">
-                                When I'm not coding, you can find me contributing to open-source projects, participating in
-                                hackathons, or learning about the latest advancements in blockchain technology.
-                            </p>
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
-                        viewport={{ once: true }}
-                        className="lg:w-1/2"
-                    >
-                        <div className="bg-black p-1 rounded-lg">
-                            {/* Replace with your image */}
-                            <div className="w-full h-96 bg-gray-300 rounded-lg flex items-center justify-center">
-                                <span className="text-white font-montserrat">About Me Image</span>
+                <div className="skills-container">
+                    {skillCategories.map((category, index) => (
+                        <div key={index} className="skill-category">
+                            <h3 className="category-title">{category.title}</h3>
+                            <div className="skills-grid">
+                                {category.skills.map((skill, skillIndex) => (
+                                    <div key={skillIndex} className="skill-item">
+                                        <div className="skill-icon">
+                                            {skill.icon}
+                                        </div>
+                                        <p className="skill-name">{skill.name}</p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                    </motion.div>
+                    ))}
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
-export default About
+export default About;

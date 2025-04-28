@@ -1,0 +1,254 @@
+/* Hero.css - Styling for the Hero component */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 1022px;
+    background: #D7D7D7;
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.hero-content {
+    padding-left: 256px;
+    padding-top: 351px;
+}
+
+.hero-subtitle {
+    width: 171px;
+    height: 58px;
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 47px;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 54px;
+}
+
+.hero-title {
+    width: 532px;
+    height: 105px;
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 94px;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+
+.hero-description {
+    width: 426px;
+    height: 40px;
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    color: #919191;
+    margin-top: -8px;
+}
+
+.social-links {
+    display: flex;
+    gap: 32px;
+    margin-top: 130px;
+}
+
+.social-link {
+    width: 61px;
+    height: 56px;
+    background: #C4C4C4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    font-size: 24px;
+    transition: background-color 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: #B0B0B0;
+}
+
+.hero-image {
+    position: relative;
+    margin-right: 277px;
+    margin-top: 145px;
+}
+
+.hero-image img {
+    width: 783px;
+    height: 877px;
+    object-fit: cover;
+}
+
+.hero-image-caption {
+    position: absolute;
+    width: 136px;
+    height: 60px;
+    left: 331px;
+    bottom: 41px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: justify;
+    color: #000000;
+}
+
+.explore-btn {
+    position: absolute;
+    width: 139px;
+    height: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 183px;
+}
+
+.explore-btn button {
+    width: 139px;
+    height: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    color: #000000;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.line {
+    width: 32px;
+    height: 2px;
+    background: #000000;
+    transform: rotate(90deg);
+}
+
+/* Black background rectangle positioned to the right */
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 1802.3px;
+    height: 1373.99px;
+    right: -866px;
+    top: -192px;
+    background: #000000;
+    transform: rotate(9.67deg);
+    z-index: 0;
+}
+
+/* Make sure hero content is above the black rectangle */
+.hero-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1920px) {
+    .hero-content {
+        padding-left: 10%;
+    }
+    
+    .hero-image {
+        margin-right: 5%;
+    }
+}
+
+@media (max-width: 1600px) {
+    .hero-image img {
+        width: 650px;
+        height: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-content {
+        padding-left: 0;
+        padding-top: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-image {
+        margin-right: 0;
+        margin-top: 50px;
+    }
+    
+    .hero-image img {
+        width: 500px;
+    }
+    
+    .hero {
+        height: auto;
+        padding-bottom: 100px;
+    }
+    
+    .explore-btn {
+        bottom: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        width: 100%;
+        font-size: 60px;
+        line-height: 70px;
+    }
+    
+    .hero-description {
+        width: 100%;
+        font-size: 20px;
+    }
+    
+    .hero-image img {
+        width: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-subtitle {
+        font-size: 30px;
+    }
+    
+    .hero-title {
+        font-size: 48px;
+        line-height: 56px;
+    }
+    
+    .hero-image img {
+        width: 300px;
+    }
+    
+    .hero-image-caption {
+        left: auto;
+        right: 0;
+        text-align: right;
+    }
+}

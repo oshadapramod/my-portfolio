@@ -1,42 +1,117 @@
-#root {
-  max-width: 1280px;
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;700&family=Raleway:wght@700;800&family=Varela&family=Nunito:wght@700&display=swap');
+
+:root {
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-dark: #1A1A1A;
+  --color-gray: #8B8B8B;
+  --color-light-gray: #D7D7D7;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+  --font-raleway: 'Raleway', sans-serif;
+  --font-varela: 'Varela', sans-serif;
+  --font-nunito: 'Nunito', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-open-sans);
+  color: var(--color-black);
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.section-header-box {
+  width: 404px;
+  height: 107px;
+  border: 8px solid var(--color-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 2rem;
+}
+
+.section-title {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  letter-spacing: 0.35em;
   text-align: center;
+  color: var(--color-black);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.separator {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Line button styling */
+.btn-with-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
+}
+
+.line {
+  height: 32px;
+  width: 2px;
+  background-color: currentColor;
+}
+
+@media (max-width: 1200px) {
+  .section-header-box {
+    width: 300px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .section-title {
+    font-size: 24px;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  .section-header-box {
+    width: 250px;
+    height: 80px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+  }
 }

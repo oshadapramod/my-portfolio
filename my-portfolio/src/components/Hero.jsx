@@ -10,7 +10,9 @@ function Hero() {
                 <div className="hero-content">
                     <h2 className="hero-subtitle">Hi, I am</h2>
                     <h1 className="hero-title">Oshada Pramod</h1>
-                    <p className="hero-description">Computer Engineering Undergraduate</p>
+                    <p className="hero-description">Computer Engineering Undergraduate
+                        <br />University of Jaffna
+                    </p>
 
                     <div className="social-links">
                         <a href="#" className="social-link">

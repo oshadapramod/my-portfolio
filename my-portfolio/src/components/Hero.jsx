@@ -9,8 +9,8 @@ function Hero() {
             <div className="hero-container">
                 <div className="hero-content">
                     <h2 className="hero-subtitle">Hi, I am</h2>
-                    <h1 className="hero-title">Tomasz Gajda</h1>
-                    <p className="hero-description">Front-end Developer / UI Designer</p>
+                    <h1 className="hero-title">Oshada Pramod</h1>
+                    <p className="hero-description">Computer Engineering Undergraduate</p>
 
                     <div className="social-links">
                         <a href="#" className="social-link">
@@ -26,8 +26,7 @@ function Hero() {
                 </div>
 
                 <div className="hero-image">
-                    <img src={heroImage} alt="Tomasz Gajda" />
-                    <p className="hero-image-caption">this is not my photo, but I dearly hope to get one just like this</p>
+                    <img src={heroImage} alt="Oshada Pramod" />
                 </div>
             </div>
 

@@ -499,7 +499,7 @@
         bottom: 0;
         left: 0;
         background: rgba(0, 0, 0, 0.8);
-        clip-path: polygon(0% 68.8%, 100.3% 56.3%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 47.8%, 100.2% 28.8%, 100% 100%, 0% 100%);
         z-index: 0; /* Set this HIGHER than the hero-container (1) */
         pointer-events: none; /* Allows clicking through the overlay */
     }
@@ -552,7 +552,7 @@
         line-height: 18px;
         color: #FFFFFF;
         margin-left: 40px;
-        margin-bottom: 55px;
+        margin-bottom: 70px;
         width: 100%;
         height: auto;
         text-align: left;
@@ -564,7 +564,7 @@
     .social-links {
         position: absolute;
         right: 20px;
-        bottom: 380px; /* Increased to position above bio box */
+        bottom: 480px; /* Increased to position above bio box */
         display: flex;
         flex-direction: column;
         gap: 15px;

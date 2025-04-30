@@ -17,6 +17,22 @@
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
+/* Add text color change when scrolled */
+.navbar-scrolled .nav-item {
+  color: var(--color-black);
+}
+
+/* Change the underline color to match the text when scrolled */
+.navbar-scrolled .nav-item::after {
+  background: var(--color-black);
+}
+
+/* Adjust contact button styling when scrolled */
+.navbar-scrolled .contact-btn {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
 .navbar-container {
   display: flex;
   justify-content: flex-end;
@@ -95,6 +111,11 @@
   cursor: pointer;
 }
 
+/* Also update menu toggle button color when scrolled */
+.navbar-scrolled .menu-toggle {
+  color: var(--color-black);
+}
+
 @media (max-width: 992px) {
   .navbar-container {
     padding: 0 20px;
@@ -134,6 +155,15 @@
     transform: translateY(-150%);
     transition: transform 0.4s ease;
   }
+
+  /* Ensure mobile menu text stays white regardless of scroll state */
+  .navbar-scrolled .nav-links .nav-item {
+    color: var(--color-white);
+  }
+
+  .navbar-scrolled .nav-links .nav-item::after {
+    background: var(--color-white);
+  }
   
   .nav-links.open {
     transform: translateY(0);
@@ -147,5 +177,11 @@
   .contact-btn {
     width: 80%;
     margin: 10px auto;
+  }
+
+  /* Keep mobile contact button styling consistent */
+  .navbar-scrolled .nav-links .contact-btn {
+    background-color: var(--color-white);
+    color: var(--color-black);
   }
 }

@@ -1,7 +1,6 @@
 // src/components/Navbar.jsx
 import { useState, useEffect } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
-import logo from '../assets/logo.svg';
 import './Navbar.css';
 
 function Navbar() {

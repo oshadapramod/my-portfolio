@@ -31,7 +31,7 @@ function Footer() {
                 </div>
 
                 <p className="copyright">
-                    &copy;2025 Tomasz Gajda All Rights Reserved.
+                    &copy;2025 Oshada Pramod All Rights Reserved.
                 </p>
             </div>
         </footer>

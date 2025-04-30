@@ -1,0 +1,180 @@
+/* About.css */
+:root {
+  --primary-color: #000000;
+  --secondary-color: #FFFFFF;
+  --accent-color: #919191;
+  --text-primary: #000000;
+  --text-secondary: #FFFFFF;
+  --gradient-dark: linear-gradient(90.18deg, #1D1D1D 31.74%, #1D1D1D 90.49%, #1D1D1D 90.49%);
+}
+
+/* General section styling */
+.services {
+  width: 100%;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.section-header {
+  width: 274px;
+  height: 67px;
+  border: 6px solid #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto 80px;
+}
+
+.section-header h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 38px;
+  text-align: center;
+  letter-spacing: 0.35538em;
+  color: #000000;
+  margin: 0;
+}
+
+.section-paragraph {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 138.68%;
+  text-align: justify;
+  margin-bottom: 3rem;
+  padding: 0 3rem;
+  justify-content: center;
+  text-align: center;
+  margin-top: -20px;
+}
+
+/* Services Cards Container */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* Service Card Styling */
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.service-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 21px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.service-description {
+  font-family: var(--font-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* facebook Section */
+.facebook-section {
+  width: 100%;
+  background: var(--gradient-dark);
+  position: relative;
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+.facebook-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.facebook-content .section-header {
+  color: var(--text-secondary);
+}
+
+.facebook-paragraph {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 138.68%;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  max-width: 1148px;
+  margin-bottom: 2rem;
+}
+
+.read-more-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.read-more-btn button {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgb(248, 248, 128);
+}
+
+.line {
+  width: 32px;
+  height: 2px;
+  background-color: var(--text-secondary);
+}
+
+.facebook-logo {
+  position: absolute;
+  top: -215px;
+  right: 0;
+  width: 388px;
+  height: 575px;
+  transform: rotate(23.89deg);
+}
+
+@media (max-width: 768px) {
+  .services-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-header h2 {
+    font-size: 24px;
+  }
+}

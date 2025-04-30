@@ -14,9 +14,9 @@
 }
 
 .about .section-header-box {
-  width: 404px;
-  height: 107px;
-  border: 8px solid #000000;
+  width: 274px;
+  height: 67px;
+  border: 6px solid #000000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 38px;
   text-align: center;
   letter-spacing: 0.35538em;

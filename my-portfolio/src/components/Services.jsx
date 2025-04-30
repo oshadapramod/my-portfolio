@@ -1,6 +1,5 @@
 // src/components/Services.jsx
 import { FaPencilRuler, FaCode, FaTools } from 'react-icons/fa';
-import separatorImage from '../assets/separator.png';
 import './Services.css';
 
 function Services() {
@@ -11,60 +10,41 @@ function Services() {
                     <h2>ABOUT ME</h2>
                 </div>
 
-                <div className="separator">
-                    <img src={separatorImage} alt="Separator" />
-                </div>
-
                 <p className="section-paragraph">
-                    I am a front-end developer and UI designer passionate about creating beautiful, functional, and user-friendly websites. With expertise in HTML, CSS, JavaScript, and React, I build responsive applications that look great on all devices.
+                    I'm an enthusiastic and driven undergraduate currently pursuing a <b>BSc. Engineering (Hons) degree,
+                        specializing in Computer Engineering at the Faculty of Engineering, University of Jaffna</b>. Originally from Ratnapura,
+                    I completed my schooling at Sivali Central College, where I followed the Physical Science stream for my Advanced Level studies.
+                    <br />
+                    <br />
+                    My interests lie at the intersection of cutting-edge fields such as <b>Blockchain, Artificial Intelligence (AI),
+                        Machine Learning (ML), Software Development, and DevOps</b>. I am passionate about exploring innovative solutions,
+                    and I continuously seek opportunities to expand my knowledge and skill set.
+                    <br />
+                    <br />
+                    In addition to my academic journey, I actively engage in volunteering through <b>IEEE</b>,
+                    where I collaborate with like-minded peers and contribute to impactful tech-driven initiatives.
+                    Outside of my studies, I enjoy playing games, watching TV series, and expressing my creativity through graphic design.
+                    <br />
+                    <br />
+                    I’m always eager to take on new challenges, learn emerging technologies,
+                    and be part of meaningful projects that make a difference.
                 </p>
-
-                <div className="services-container">
-                    <div className="service-card">
-                        <div className="service-icon">
-                            <FaPencilRuler />
-                        </div>
-                        <h3 className="service-title">DESIGN</h3>
-                        <p className="service-description">
-                            I can design the site based on your needs and suggestions. I can also design the site from scratch and consult you during the job.
-                        </p>
-                    </div>
-
-                    <div className="service-card">
-                        <div className="service-icon">
-                            <FaCode />
-                        </div>
-                        <h3 className="service-title">DEVELOPMENT</h3>
-                        <p className="service-description">
-                            I can design the site based on your needs and suggestions. I can also design the site from scratch and consult you during the job.
-                        </p>
-                    </div>
-
-                    <div className="service-card">
-                        <div className="service-icon">
-                            <FaTools />
-                        </div>
-                        <h3 className="service-title">MAINTENANCE</h3>
-                        <p className="service-description">
-                            I can design the site based on your needs and suggestions. I can also design the site from scratch and consult you during the job.
-                        </p>
-                    </div>
-                </div>
             </div>
 
-            <div className="itberries-section">
-                <div className="itberries-content">
-                    <h3 className="section-header">Section Header</h3>
-                    <p className="itberries-paragraph">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet ultricies lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
-                    </p>
+            <div className="facebook-section">
+                <div className="facebook-content">
+                    <p className="facebook-paragraph">
+                        I’m passionate about graphic design — from flyers and logos to eye-catching social media posts.
+                        Check out my latest work on my Facebook page and feel free to reach out!                    </p>
                     <div className="read-more-btn">
                         <span className="line"></span>
-                        <button>READ MORE</button>
+                        <button onClick={() => window.location.href = 'https://www.facebook.com/des.by.op'}>
+                            SEE SOME OF MY WORKS
+                        </button>
                         <span className="line"></span>
                     </div>
                 </div>
-                <div className="itberries-logo"></div>
+                <div className="facebook-logo"></div>
             </div>
         </section>
     );

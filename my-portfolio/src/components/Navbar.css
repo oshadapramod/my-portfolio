@@ -1,0 +1,187 @@
+/* src/components/Navbar.css */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 66px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Add text color change when scrolled */
+.navbar-scrolled .nav-item {
+  color: var(--color-black);
+}
+
+/* Change the underline color to match the text when scrolled */
+.navbar-scrolled .nav-item::after {
+  background: var(--color-black);
+}
+
+/* Adjust contact button styling when scrolled */
+.navbar-scrolled .contact-btn {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 0px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  font-family: var(--font-bricolage);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-white);
+  padding: 8px 16px;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-white);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 70%;
+}
+
+.contact-btn {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: 30px;
+  font-size: 15px;
+  border: none;
+  padding: 10px 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.contact-btn::after {
+  display: none;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--color-white);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Also update menu toggle button color when scrolled */
+.navbar-scrolled .menu-toggle {
+  color: var(--color-black);
+}
+
+@media (max-width: 992px) {
+  .navbar-container {
+    padding: 0 20px;
+  }
+  
+  .nav-links {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 60px;
+  }
+  
+  .navbar-container {
+    justify-content: space-between;
+  }
+  
+  .menu-toggle {
+    display: block;
+    z-index: 1001;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(11, 11, 11, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px 20px;
+    gap: 20px;
+    height: auto;
+    transform: translateY(-150%);
+    transition: transform 0.4s ease;
+  }
+
+  /* Ensure mobile menu text stays white regardless of scroll state */
+  .navbar-scrolled .nav-links .nav-item {
+    color: var(--color-white);
+  }
+
+  .navbar-scrolled .nav-links .nav-item::after {
+    background: var(--color-white);
+  }
+  
+  .nav-links.open {
+    transform: translateY(0);
+  }
+  
+  .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .contact-btn {
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  /* Keep mobile contact button styling consistent */
+  .navbar-scrolled .nav-links .contact-btn {
+    background-color: var(--color-white);
+    color: var(--color-black);
+  }
+}

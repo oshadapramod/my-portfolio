@@ -10,18 +10,18 @@ function Hero() {
                 <div className="hero-content">
                     <h2 className="hero-subtitle">Hi, I am</h2>
                     <h1 className="hero-title">Oshada Pramod</h1>
-                    <p className="hero-description">Computer Engineering Undergraduate
+                    <p className="hero-description">Computer Engineering Undergraduate at
                         <br />University of Jaffna
                     </p>
 
                     <div className="social-links">
-                        <a href="#" className="social-link">
+                        <a href="https://github.com/oshadapramod/" className="social-link">
                             <FaGithub />
                         </a>
-                        <a href="#" className="social-link">
+                        <a href="https://www.linkedin.com/in/oshadapramod/" className="social-link">
                             <FaLinkedin />
                         </a>
-                        <a href="mailto:contact@example.com" className="social-link">
+                        <a href="oshadapramod99@gmail.com" className="social-link">
                             <FaEnvelope />
                         </a>
                     </div>

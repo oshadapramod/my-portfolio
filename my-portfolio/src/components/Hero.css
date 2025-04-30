@@ -41,12 +41,11 @@
 
 .hero-subtitle {
     width: 571px;
-    height: 58px;
     font-family: 'Bricolage Grotesque', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
-    line-height: 37px;
+    margin-bottom: -18px;
     display: flex;
     align-items: flex-end;
     text-align: center;
@@ -85,27 +84,25 @@
 
 .social-links {
     display: flex;
-    gap: 32px;
-    margin-top: 130px;
+    gap: 42px;
+    margin-top: 100px;
 }
 
 .social-link {
-    width: 61px;
-    height: 56px;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    width: 76px;
+    height: 76px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #FFFFFF;
-    font-size: 24px;
+    font-size: 54px;
     transition: all 0.3s ease;
     border-radius: 8px;
 }
 
 .social-link:hover {
-    background-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    filter: drop-shadow(0px 18px 18px  rgba(0, 0, 0, 0.168));
 }
 
 .hero-image {
@@ -167,7 +164,7 @@
     height: 100%;
     top: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     clip-path: polygon(49.9% 0%, 100.1% 0%, 100% 100%, 41.4% 100.3%);
     z-index: 0;
 }

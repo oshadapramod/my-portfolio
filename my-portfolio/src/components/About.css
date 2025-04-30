@@ -20,11 +20,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 80px;
+  margin: 0px auto 80px;
 }
 
 .about .section-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 25px;
@@ -45,7 +45,7 @@
 }
 
 .about .category-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 30px;
@@ -78,62 +78,12 @@
 }
 
 .about .skill-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Color overrides for the specific icons to match the design */
-.about .skill-item:nth-child(1) .skill-icon svg {
-  color: #FF5722; /* HTML5 color */
-}
-
-.about .skill-item:nth-child(2) .skill-icon svg {
-  color: #2196F3; /* CSS3 color */
-}
-
-.about .skill-item:nth-child(3) .skill-icon svg {
-  color: #CF649A; /* SASS color */
-}
-
-.about .skill-item:nth-child(4) .skill-icon svg {
-  color: #F7DF1E; /* JavaScript color */
-}
-
-.about .skill-item:nth-child(5) .skill-icon svg {
-  color: #53C1DE; /* React color */
-}
-
-.about .skill-item:nth-child(6) .skill-icon svg {
-  color: #563D7C; /* Bootstrap color */
-}
-
-.about .skill-item:nth-child(7) .skill-icon svg {
-  color: #F05032; /* Git color */
-}
-
-.about .skill-item:nth-child(8) .skill-icon svg {
-  color: #0ACF83; /* Figma color */
-}
-
-/* Learning section icons */
-.about .skill-category:nth-child(2) .skill-item:nth-child(1) .skill-icon svg {
-  color: #539E43; /* Node.js color */
-}
-
-.about .skill-category:nth-child(2) .skill-item:nth-child(2) .skill-icon svg {
-  color: #00546B; /* MySQL color */
-}
-
-.about .skill-category:nth-child(2) .skill-item:nth-child(3) .skill-icon svg {
-  color: #10AA50; /* MongoDB color */
-}
-
-.about .skill-category:nth-child(2) .skill-item:nth-child(4) .skill-icon svg {
-  color: #007ACC; /* TypeScript color */
+  width: 90%;
+  height: auto;
 }
 
 .about .skill-name {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -141,16 +91,9 @@
   text-align: center;
   letter-spacing: 0.13538em;
   color: #000000;
-  margin: 0;
+  margin-top: -10px;
 }
 
-/* Other skills section (lacks icons) */
-.about .skill-category:nth-child(3) .skill-icon {
-  border-radius: 0;
-  background-color: #C4C4C4;
-  width: 88px;
-  height: 100px;
-}
 
 /* Media queries for responsive design */
 @media (max-width: 1200px) {

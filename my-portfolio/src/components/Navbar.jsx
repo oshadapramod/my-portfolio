@@ -43,15 +43,10 @@ function Navbar() {
         setActiveSection(section);
         setMenuOpen(false);
 
-        if (section === 'about') {
-            // Scroll to top of the page for "About me"
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            // Scroll to the specific section
-            const element = document.getElementById(section);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
+        // Scroll to the specific section for all navigation items
+        const element = document.getElementById(section);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
         }
     };
 

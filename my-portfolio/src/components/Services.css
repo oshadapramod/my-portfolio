@@ -88,7 +88,7 @@
 }
 
 .service-title {
-  font-family: var(--font-heading);
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
   font-size: 17px;
   line-height: 21px;
@@ -97,7 +97,7 @@
 }
 
 .service-description {
-  font-family: var(--font-secondary);
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 15px;
   line-height: 1.6;
   text-align: center;
@@ -156,15 +156,6 @@
   width: 32px;
   height: 2px;
   background-color: var(--text-secondary);
-}
-
-.facebook-logo {
-  position: absolute;
-  top: -215px;
-  right: 0;
-  width: 388px;
-  height: 575px;
-  transform: rotate(23.89deg);
 }
 
 @media (max-width: 768px) {

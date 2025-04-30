@@ -1,10 +1,8 @@
-// src/components/Services.jsx
-import { FaPencilRuler, FaCode, FaTools } from 'react-icons/fa';
 import './Services.css';
 
 function Services() {
     return (
-        <section className="services" id="services">
+        <section className="services" id="about">
             <div className="container">
                 <div className="section-header">
                     <h2>ABOUT ME</h2>
@@ -44,7 +42,6 @@ function Services() {
                         <span className="line"></span>
                     </div>
                 </div>
-                <div className="facebook-logo"></div>
             </div>
         </section>
     );

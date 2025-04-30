@@ -1,6 +1,6 @@
 // src/components/Contact.jsx
 import { useState } from 'react';
-import separatorImage from '../assets/separator.png';
+import emailjs from 'emailjs-com';
 import './Contact.css';
 
 function Contact() {
@@ -54,19 +54,23 @@ function Contact() {
         e.preventDefault();
 
         if (validateForm()) {
-            // Submit the form
-            console.log('Form submitted:', formData);
-
-            // Clear form
-            setFormData({
-                name: '',
-                email: '',
-                phone: '',
-                message: ''
+            emailjs.send(
+                'service_bglg9rv', // Replace with your EmailJS service ID
+                'template_v3u61pt', // Replace with your EmailJS template ID
+                formData,
+                'nvZ6uhx72Qwtp5ta-' // Replace with your EmailJS public key
+            ).then(() => {
+                alert('Message sent successfully!');
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    message: ''
+                });
+            }).catch((error) => {
+                alert('Failed to send message. Please try again.');
+                console.error('EmailJS Error:', error);
             });
-
-            // Show success message (would be implemented with proper state management)
-            alert('Message sent successfully!');
         }
     };
 
@@ -80,10 +84,6 @@ function Contact() {
                 <p className="contact-intro">
                     I'd love to hear from you! Whether you have a question, proposal, or just want to say hello, fill out the form below and I'll get back to you as soon as possible.
                 </p>
-
-                <div className="separator">
-                    <img src={separatorImage} alt="Separator" />
-                </div>
 
                 <form className="contact-form" onSubmit={handleSubmit}>
                     <div className="form-group">

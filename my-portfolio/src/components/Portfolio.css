@@ -161,6 +161,12 @@
   transition: opacity 0.3s ease;
 }
 
+.portfolio .project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .portfolio .project-title {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
@@ -208,16 +214,27 @@
   background-color: #FFFFFF;
 }
 
-.portfolio .external-icon {
-  width: 16px;
-  height: 16px;
+/* External icon styling - repositioned to top right */
+.portfolio .external-icon-container {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  margin-left: auto;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 20;
 }
 
-.portfolio .project-card:hover .external-icon {
+.portfolio .project-card:hover .external-icon-container {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .portfolio .portfolio-footer {

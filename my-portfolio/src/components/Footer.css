@@ -50,9 +50,10 @@
   justify-content: center;
   gap: 30px;
   margin-bottom: 40px;
+  margin-top: 40px;
 }
 
-.footer .social-link {
+.footer .footer-social-link {
   width: 40px;
   height: auto;
   display: flex;
@@ -63,11 +64,11 @@
   transition: all 0.3s ease;
 }
 
-.footer .social-link:hover {
+.footer .footer-social-link:hover {
   color: #fff;
 }
 
-.footer .social-link svg {
+.footer .footer-social-link svg {
   width: 100%;
   height: 100%;
 }

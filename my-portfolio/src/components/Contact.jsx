@@ -55,10 +55,10 @@ function Contact() {
 
         if (validateForm()) {
             emailjs.send(
-                'service_bglg9rv', // Replace with your EmailJS service ID
-                'template_v3u61pt', // Replace with your EmailJS template ID
+                process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
                 formData,
-                'nvZ6uhx72Qwtp5ta-' // Replace with your EmailJS public key
+                process.env.REACT_APP_EMAILJS_PUBLIC_KEY
             ).then(() => {
                 alert('Message sent successfully!');
                 setFormData({

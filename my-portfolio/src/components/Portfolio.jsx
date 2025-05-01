@@ -16,14 +16,14 @@ function Portfolio() {
         {
             id: 1,
             title: "Rail Go",
-            description: "Smart Railway Payment System using RFID Cards",
+            description: "Smart Railway Payment System using RFID Cards.",
             image: railgoImage,
             demoLink: "https://github.com/oshadapramod/SmartRailwayPayment.git"
         },
         {
             id: 2,
             title: "Dept Wise",
-            description: "Management Assistant Web App (Computer Eng. Dept.)",
+            description: "Management Assistant Web App for Computer Engineering Department.",
             image: macom,
             demoLink: "https://github.com/PasinduChandrasiri/MA-COM.git"
         },
@@ -37,14 +37,14 @@ function Portfolio() {
         {
             id: 4,
             title: "SpiritX - Cricket Fantasy AI Assistant",
-            description: "An intelligent chatbot for cricket fantasy leagues",
+            description: "An intelligent chatbot for cricket fantasy leagues.",
             image: spiritx,
             demoLink: "https://github.com/oshadapramod/SpiritX_CrypticHackers_02.git"
         },
         {
             id: 5,
             title: "Image Captioning System",
-            description: "Productivity app with drag-and-drop functionality",
+            description: "A deep learning model that generates human-like captions for images using CNN-LSTM architecture.",
             image: deep,
             demoLink: "https://example.com/task-demo",
             moreLink: "https://example.com/task-details"

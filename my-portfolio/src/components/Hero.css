@@ -1,8 +1,9 @@
 .hero {
     position: relative;
     width: 100%;
-    height: 982px; /* Increased height to accommodate the bio box */
-    overflow: hidden; 
+    height: 982px;
+    /* Increased height to accommodate the bio box */
+    overflow: hidden;
     background: #000;
     position: relative;
 }
@@ -119,9 +120,11 @@
     0% {
         transform: translateX(-40%) translateY(-10%);
     }
+
     50% {
         transform: translateX(40%) translateY(10%);
     }
+
     100% {
         transform: translateX(-40%) translateY(-10%);
     }
@@ -131,9 +134,11 @@
     0% {
         transform: rotate(0deg) translateX(50px) rotate(0deg);
     }
+
     50% {
         transform: rotate(180deg) translateX(50px) rotate(-180deg);
     }
+
     100% {
         transform: rotate(360deg) translateX(50px) rotate(-360deg);
     }
@@ -143,9 +148,11 @@
     0% {
         transform: translateY(-40%);
     }
+
     50% {
         transform: translateY(40%);
     }
+
     100% {
         transform: translateY(-40%);
     }
@@ -155,15 +162,19 @@
     0% {
         transform: translateX(-30%) translateY(-20%);
     }
+
     25% {
         transform: translateX(30%) translateY(-10%);
     }
+
     50% {
         transform: translateX(-10%) translateY(30%);
     }
+
     75% {
         transform: translateX(20%) translateY(-30%);
     }
+
     100% {
         transform: translateX(-30%) translateY(-20%);
     }
@@ -174,10 +185,12 @@
         transform: scale(0.8);
         opacity: 0.5;
     }
+
     50% {
         transform: scale(1.2);
         opacity: 0.8;
     }
+
     100% {
         transform: scale(0.8);
         opacity: 0.5;
@@ -261,7 +274,7 @@
 
 .social-link:hover {
     transform: translateY(-4px);
-    filter: drop-shadow(0px 18px 18px  rgba(0, 0, 0, 0.168));
+    filter: drop-shadow(0px 18px 18px rgba(0, 0, 0, 0.168));
 }
 
 .hero-image {
@@ -305,43 +318,56 @@
     color: rgb(223, 223, 223);
     box-sizing: border-box;
     margin-top: -5px;
-    display: flex; /* Added to create a row layout */
-    align-items: center; /* Center items vertically */
+    display: flex;
+    /* Added to create a row layout */
+    align-items: center;
+    /* Center items vertically */
 }
 
 /* New container for the GIF */
 .bio-gif-container {
-    flex: 0 0 180px; /* Fixed width for the GIF container */
-    height: 180px; /* Fixed height for the GIF container */
-    margin-right: 40px; /* Space between GIF and text */
+    flex: 0 0 180px;
+    /* Fixed width for the GIF container */
+    height: 180px;
+    /* Fixed height for the GIF container */
+    margin-right: 40px;
+    /* Space between GIF and text */
     margin-left: 30px;
     margin-bottom: 10px;
-    overflow: hidden; /* In case the GIF overflows */
-    border-radius: 10px; /* Optional: rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+    overflow: hidden;
+    /* In case the GIF overflows */
+    border-radius: 10px;
+    /* Optional: rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Optional: shadow effect */
 }
 
 .bio-gif {
     width: 200px;
     height: auto;
-    object-fit: cover; /* Makes the GIF cover the container */
+    object-fit: cover;
+    /* Makes the GIF cover the container */
     display: block;
 }
 
 .bio-edit-container {
-    flex: 1; /* Takes the remaining space */
+    flex: 1;
+    /* Takes the remaining space */
     position: relative;
-    justify-content: flex-start; /* Changed from center to flex-start */
+    justify-content: flex-start;
+    /* Changed from center to flex-start */
     font-family: 'Bricolage Grotesque', sans-serif;
     font-style: normal;
     font-weight: 300;
     font-size: 18px;
     display: flex;
     align-items: center;
-    text-align: left; /* Ensure text is left-aligned */
-    padding-right: 15px; /* Add some padding on the right */
+    text-align: left;
+    /* Ensure text is left-aligned */
+    padding-right: 15px;
+    /* Add some padding on the right */
     margin-top: -50px;
-    
+
 }
 
 /* Responsive adjustments */
@@ -349,25 +375,54 @@
     .hero-content {
         padding-left: 10%;
     }
-    
+
     .hero-image {
         margin-right: 5%;
     }
 }
 
 @media (max-width: 1600px) {
+
     .hero-image img {
         width: 650px;
         height: auto;
     }
+
+    .bio-box {
+        margin-bottom: -30px;
+    }
 }
 
 @media (max-width: 1200px) {
+    .hero {
+        position: relative;
+        width: 100%;
+        height: auto;
+        /* Changed to auto */
+        min-height: 982px;
+        overflow: hidden;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-subtitle {
+        margin-left: -57px;
+    }
+
     .hero-container {
         flex-direction: column;
         align-items: center;
+        flex: 1;
+        padding-bottom: 0;
+        /* Removed padding */
     }
-    
+
+    .social-links {
+        margin-top: 70px;
+        margin-left: -370px;
+    }
+
     .hero-content {
         padding-left: 0;
         padding-top: 150px;
@@ -375,60 +430,99 @@
         flex-direction: column;
         align-items: center;
     }
-    
+
     .hero-image {
         margin-right: 0;
         margin-top: 50px;
+        margin-bottom: 0px;
+        /* Added space before bio box */
     }
-    
+
     .hero-image img {
         width: 500px;
     }
-    
-    .hero {
-        height: auto;
-        min-height: 1000px;
-        padding-bottom: 220px; /* Increased to accommodate the bio box */
-    }
-    
+
     .bio-box {
-        bottom: 30px;
-        height: auto; /* Allow height to adjust on smaller screens */
+        width: 100%;
+        padding: 10px;
+        height: auto;
+        /* Auto height to accommodate content */
+        min-height: 250px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: -40px;
     }
 }
 
 @media (max-width: 768px) {
+    .hero {
+        position: relative;
+        width: 100%;
+        height: auto;
+        /* Changed to auto */
+        min-height: 852px;
+        overflow: hidden;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-subtitle {
+        margin-left: 117px;
+    }
+
     .hero-title {
         width: 100%;
         font-size: 60px;
         line-height: 70px;
+        margin-left: 235px;
     }
-    
+
     .hero-description {
         width: 100%;
         font-size: 20px;
+        margin-left: 235px;
+        margin-top: -20px;
     }
-    
+
     .hero-image img {
-        width: 400px;
+        width: 500px;
     }
-    
+
+    .hero-image {
+        margin-bottom: 0px;
+        /* Added space before bio box */
+    }
+
     .bio-box {
-        width: 90%;
-        padding: 20px;
-        flex-direction: column; /* Stack elements on smaller screens */
-        height: auto; /* Auto height to accommodate content */
+        width: 100%;
+        padding: 10px;
+        height: auto;
+        /* Auto height to accommodate content */
+        min-height: 235px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1px;
     }
-    
+
     .bio-gif-container {
         margin-right: 0;
-        margin-bottom: 20px; /* Space between GIF and text when stacked */
-        width: 150px; /* Slightly smaller on mobile */
+        margin-bottom: 20px;
+        width: 150px;
         height: 150px;
     }
-    
+
     .bio-edit-container {
         padding-right: 0;
+        justify-content: center;
+        align-items: center;
+        margin-top: -40px;
+    }
+
+    .social-links {
+        gap: 15px;
+        margin-top: 50px;
+        margin-left: -220px;
     }
 }
 
@@ -437,8 +531,10 @@
     .hero {
         position: relative;
         width: 100%;
-        height: 100vh; /* Full viewport height */
-        min-height: 750px; /* Increased to accommodate bio box */
+        height: 100vh;
+        /* Full viewport height */
+        min-height: 750px;
+        /* Increased to accommodate bio box */
         background: #000000;
         overflow: hidden;
         padding: 0;
@@ -448,18 +544,22 @@
     /* Keep background gradients visible and animated */
     .background-gradient {
         display: block;
-        opacity: 0.5; /* Reduced opacity for better visibility of content */
-        z-index: 0; /* Lower z-index for gradients */
+        opacity: 0.5;
+        /* Reduced opacity for better visibility of content */
+        z-index: 0;
+        /* Lower z-index for gradients */
     }
 
     /* Position hero container properly */
     .hero-container {
         position: relative;
-        flex-direction: column-reverse; /* Image first, then content */
+        flex-direction: column-reverse;
+        /* Image first, then content */
         width: 100%;
         height: 100vh;
         padding: 20px 0 0 0;
-        z-index: 1; /* Set z-index higher than .hero::after */
+        z-index: 1;
+        /* Set z-index higher than .hero::after */
     }
 
     /* Fix hero image positioning */
@@ -469,12 +569,13 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: auto; 
+        height: auto;
         margin: 0;
         padding: 0;
         overflow: visible;
         text-align: center;
-        z-index: 1; /* Same z-index as container */
+        z-index: 1;
+        /* Same z-index as container */
     }
 
     .hero-image img {
@@ -500,20 +601,25 @@
         left: 0;
         background: rgba(0, 0, 0, 0.8);
         clip-path: polygon(0% 47.8%, 100.2% 28.8%, 100% 100%, 0% 100%);
-        z-index: 0; /* Set this HIGHER than the hero-container (1) */
-        pointer-events: none; /* Allows clicking through the overlay */
+        z-index: 0;
+        /* Set this HIGHER than the hero-container (1) */
+        pointer-events: none;
+        /* Allows clicking through the overlay */
     }
 
     /* Content positioning */
     .hero-content {
         position: absolute;
-        bottom: 170px; /* Increased to make room for bio box */
+        bottom: 170px;
+        /* Increased to make room for bio box */
         left: 20px;
         width: calc(100% - 40px);
         padding: 0;
         margin: 0;
-        z-index: 3; /* Higher than the polygon overlay */
-        pointer-events: auto; /* Ensure clickability */
+        z-index: 3;
+        /* Higher than the polygon overlay */
+        pointer-events: auto;
+        /* Ensure clickability */
     }
 
     .hero-subtitle {
@@ -537,7 +643,7 @@
         line-height: 38px;
         color: #FFFFFF;
         margin-left: 40px;
-        margin-bottom: 15px;
+        margin-bottom: 25px;
         width: 100%;
         height: auto;
         text-align: left;
@@ -552,7 +658,7 @@
         line-height: 18px;
         color: #FFFFFF;
         margin-left: 40px;
-        margin-bottom: 70px;
+        margin-bottom: 90px;
         width: 100%;
         height: auto;
         text-align: left;
@@ -564,13 +670,16 @@
     .social-links {
         position: absolute;
         right: 20px;
-        bottom: 480px; /* Increased to position above bio box */
+        bottom: 440px;
+        /* Increased to position above bio box */
         display: flex;
         flex-direction: column;
         gap: 15px;
-        z-index: 5; /* Highest z-index to ensure visibility */
+        z-index: 5;
+        /* Highest z-index to ensure visibility */
         margin: 0;
-        pointer-events: auto; /* Ensure clickability */
+        pointer-events: auto;
+        /* Ensure clickability */
     }
 
     .social-link {
@@ -608,7 +717,7 @@
         box-sizing: border-box;
         box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
     }
-    
+
     .bio-gif-container {
         flex: 0 0 80px;
         height: 80px;
@@ -618,13 +727,13 @@
         border-radius: 8px;
         overflow: hidden;
     }
-    
+
     .bio-gif {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
-    
+
     .bio-edit-container {
         flex: 1;
         font-family: 'Bricolage Grotesque', sans-serif;
@@ -634,9 +743,10 @@
         color: rgb(223, 223, 223);
         text-align: left;
         margin-top: 0;
-        max-height: 200px;
+        max-height: 240px;
         overflow-y: auto;
         padding-right: 10px;
+        padding-left: 10px;
     }
 
     /* Top bar with logo and menu */

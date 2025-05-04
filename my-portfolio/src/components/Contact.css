@@ -209,9 +209,11 @@
   0% {
     transform: translateY(-20%);
   }
+
   50% {
     transform: translateY(20%);
   }
+
   100% {
     transform: translateY(-20%);
   }
@@ -221,32 +223,32 @@
   0% {
     transform: rotate(0deg) translateX(20px) rotate(0deg);
   }
+
   50% {
     transform: rotate(180deg) translateX(20px) rotate(-180deg);
   }
+
   100% {
     transform: rotate(360deg) translateX(20px) rotate(-360deg);
   }
 }
 
-/* Success message styling */
-.success-message {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  text-align: center;
-  color: #2ecc71;
-  margin-top: 30px;
-  letter-spacing: 0.05em;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+/* Success animation container */
+.success-animation-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
 }
 
-.success-message.visible {
-  opacity: 1;
-  transform: translateY(0);
+.animation {
+  width: 850px;
+  height: 850px;
+  margin-bottom: -200px;
+  margin-top: -200px;
 }
 
 /* Media queries for responsive design */
@@ -261,9 +263,14 @@
     width: 320px;
     height: 70px;
   }
-  
+
   .contact-intro {
     font-size: 17px;
+  }
+
+  .animation {
+    width: 200px;
+    height: 200px;
   }
 }
 
@@ -271,14 +278,19 @@
   .contact-form {
     max-width: 90%;
   }
-  
+
   .submit-btn {
     padding: 14px 30px;
     font-size: 16px;
   }
-  
+
   .submit-btn .line {
     width: 25px;
+  }
+
+  .animation {
+    width: 180px;
+    height: 180px;
   }
 }
 
@@ -287,32 +299,37 @@
     width: 280px;
     height: 60px;
   }
-  
+
   .contact .section-header-box h2 {
     font-size: 22px;
   }
-  
+
   .contact-intro {
     font-size: 16px;
     padding: 0 15px;
   }
-  
+
   .contact-form input,
   .contact-form textarea {
     font-size: 15px;
   }
-  
+
   .submit-btn {
     padding: 12px 25px;
     font-size: 15px;
   }
-  
+
   .submit-btn .line {
     width: 20px;
     margin: 0 10px;
   }
-  
+
   .separator img {
     height: 20px;
+  }
+
+  .animation {
+    width: 150px;
+    height: 150px;
   }
 }

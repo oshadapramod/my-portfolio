@@ -272,6 +272,11 @@
     border-radius: 8px;
 }
 
+.credly-link svg {
+    width: 66px;
+    height: auto;
+}
+
 .social-link:hover {
     transform: translateY(-4px);
     filter: drop-shadow(0px 18px 18px rgba(0, 0, 0, 0.168));

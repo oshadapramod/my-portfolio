@@ -1,5 +1,6 @@
 // src/components/Hero.jsx
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { SiCredly } from "react-icons/si";
 import { useEffect, useRef, useState } from 'react';
 import heroImage from '../assets/hero-image.png';
 import bioGif from '../assets/bio-gif.gif'; // Import the GIF image
@@ -160,6 +161,9 @@ function Hero() {
                         </a>
                         <a href="https://www.linkedin.com/in/oshadapramod/" className="social-link">
                             <FaLinkedin />
+                        </a>
+                        <a href="https://www.credly.com/users/oshada-pramod-nandarathna" className="social-link credly-link">
+                            <SiCredly />
                         </a>
                         <a href="mailto:oshadapramod99@gmail.com" className="social-link">
                             <FaEnvelope />

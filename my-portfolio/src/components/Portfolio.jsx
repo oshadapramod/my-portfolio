@@ -4,7 +4,8 @@ import railgoImage from '../assets/railgo.jpg';
 import macom from '../assets/macom.png';
 import spiritx from '../assets/spiritx.png';
 import running from '../assets/running.png';
-import cpusch from '../assets/cpusch.jpg';
+import ibmCapstoneImage from '../assets/ibmCapstoneImage.jpeg';
+import cicdProjectImage from '../assets/cicdProjectImage.webp';
 import deep from '../assets/deep.jpg';
 import evoting from '../assets/evoting.jpg';
 import './Portfolio.css';
@@ -15,34 +16,41 @@ function Portfolio() {
     const completedProjects = [
         {
             id: 1,
-            title: "Rail Go",
-            description: "Smart Railway Payment System using RFID Cards.",
-            image: railgoImage,
-            demoLink: "https://github.com/oshadapramod/SmartRailwayPayment.git"
+            title: "CI/CD Pipeline with Jenkins & Docker",
+            description: "Automated build, test & deployment using Jenkins and Docker on Ubuntu with GitHub-triggered pipelines.",
+            image: cicdProjectImage,
+            demoLink: "https://www.linkedin.com/posts/oshadapramod_devops-ciabrcd-docker-activity-7346197121282297856-eAfk?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYvY-cBZdOwc7R-ORlq2dQbZNoJ6mIFwKI"
         },
         {
             id: 2,
+            title: "IBM DevOps Capstone Project",
+            description: "End-to-end DevOps implementation using CI/CD, Flask-based microservices, Kubernetes, OpenShift, and cloud-native principles.",
+            image: ibmCapstoneImage,
+            demoLink: "https://www.coursera.org/account/accomplishments/verify/VAGYYSCJEGB8"
+        },
+        {
+            id: 3,
             title: "Dept Wise",
             description: "Management Assistant Web App for Computer Engineering Department.",
             image: macom,
             demoLink: "https://github.com/PasinduChandrasiri/MA-COM.git"
         },
         {
-            id: 3,
-            title: "CPU Scheduling Simulator",
-            description: "A GUI-based simulator visualizing FCFS, SJF, Priority, and Round Robin scheduling algorithms.",
-            image: cpusch,
-            demoLink: "https://github.com/oshadapramod/SchedulingAlgo.git"
+            id: 4,
+            title: "Rail Go",
+            description: "Smart Railway Payment System using RFID Cards.",
+            image: railgoImage,
+            demoLink: "https://github.com/oshadapramod/SmartRailwayPayment.git"
         },
         {
-            id: 4,
+            id: 5,
             title: "SpiritX - Cricket Fantasy AI Assistant",
             description: "An intelligent chatbot for cricket fantasy leagues.",
             image: spiritx,
             demoLink: "https://github.com/oshadapramod/SpiritX_CrypticHackers_02.git"
         },
         {
-            id: 5,
+            id: 6,
             title: "Image Captioning System",
             description: "A deep learning model that generates human-like captions for images using CNN-LSTM architecture.",
             image: deep,

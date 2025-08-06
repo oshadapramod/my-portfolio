@@ -14,9 +14,8 @@ function Services() {
                     I completed my schooling at Sivali Central College, where I followed the Physical Science stream for my Advanced Level studies.
                     <br />
                     <br />
-                    My interests lie at the intersection of cutting-edge fields such as <b>Blockchain, Artificial Intelligence (AI),
-                        Machine Learning (ML), Software Development, and DevOps</b>. I am passionate about exploring innovative solutions,
-                    and I continuously seek opportunities to expand my knowledge and skill set.
+                    My core interests include <b>DevOps, Cloud Computing, and Software Development</b>. I'm passionate about learning tools like Docker,
+                    GitHub Actions, and Terraform, and I'm eager to gain hands-on experience in CI/CD, automation, and infrastructure as code.
                     <br />
                     <br />
                     In addition to my academic journey, I actively engage in volunteering through <b>IEEE</b>,

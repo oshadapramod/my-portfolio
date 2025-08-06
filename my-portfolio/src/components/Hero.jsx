@@ -150,8 +150,8 @@ function Hero() {
                 <div className="hero-content">
                     <h2 className="hero-subtitle">Hi, I am</h2>
                     <h1 className="hero-title">Oshada Pramod</h1>
-                    <p className="hero-description">Computer Engineering Undergraduate at
-                        <br />University of Jaffna
+                    <p className="hero-description">Aspiring DevOps Engineer
+                        <br />Computer Engineering Undergraduate
                     </p>
 
                     <div className="social-links">
@@ -177,7 +177,7 @@ function Hero() {
                     <img src={bioGif} alt="Coding GIF" className="bio-gif" />
                 </div>
                 <div className="bio-edit-container">
-                    I am a dedicated and motivated individual with a strong passion for technology, including blockchain, artificial intelligence (AI), and machine learning (ML). With a background in software development and hands-on experience in both front-end and back-end technologies, I thrive in collaborative environments and enjoy solving complex problems. I am always eager to take on new challenges and contribute to innovative projects.
+                    I am a dedicated and motivated individual with a strong passion for technology, especially in the areas of DevOps, cloud computing, and automation. With a background in software development and hands-on experience in both front-end and back-end technologies, I enjoy building efficient systems and streamlining development workflows. I thrive in collaborative environments and love solving complex problems related to infrastructure and deployment. I’m currently seeking a DevOps internship to gain industry experience and contribute to impactful, tech-driven projects.
                 </div>
             </div>
         </section>

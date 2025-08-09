@@ -11,8 +11,8 @@ function Hero() {
     const heroRef = useRef(null);
     const heroTitleRef = useRef(null);
     const socialLinksRef = useRef(null);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isHovering, setIsHovering] = useState(false);
+    // Remove high-frequency React state updates for mouse movement
+    const isHoveringRef = useRef(false);
     const [bioText, setBioText] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [rainHeight, setRainHeight] = useState(0);
@@ -41,43 +41,40 @@ function Hero() {
     // Cleanup on unmount
     useEffect(() => () => { if (noticeTimeoutRef.current) clearTimeout(noticeTimeoutRef.current); }, []);
 
-    // Pre-generate column data so it stays stable across re-renders
-    const codeRainColumns = useMemo(() => {
-        const columns = 24; // adjust for density (narrower area now)
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'; // English letters + numbers only
-        const lineHeightPx = 16; // keep in sync with CSS .code-rain__column line-height
-        const extraVisiblePx = 50; // requested additional visible length
-        const baseLength = 34; // previous length
-        const extraChars = Math.ceil(extraVisiblePx / lineHeightPx); // translate pixels to char rows
-        const streamLength = baseLength + extraChars; // new total length
-        const makeStream = () => Array.from({ length: streamLength }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-        return Array.from({ length: columns }, (_, i) => ({
-            id: i,
-            left: (i / columns) * 100, // left within its container (now limited in CSS)
-            duration: 8 + Math.random() * 10, // 8s - 18s
-            delay: -Math.random() * 18, // negative for staggered start
-            stream: makeStream()
-        }));
-    }, []);
-
-    // Separate set for lower rain to desynchronize
-    const codeRainColumnsLower = useMemo(() => {
-        const columns = 24;
+    // Build & memoize rain structure (columns + per-char style) once to avoid regenerating each render
+    function buildRain(columns, baseLength, extraVisiblePx, charSpeedMin, charSpeedVar, columnDelayMax, columnBaseDurationOffset = 6) {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         const lineHeightPx = 16;
-        const extraVisiblePx = 50;
-        const baseLength = 36; // slightly different to vary
         const extraChars = Math.ceil(extraVisiblePx / lineHeightPx);
         const streamLength = baseLength + extraChars;
-        const makeStream = () => Array.from({ length: streamLength }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-        return Array.from({ length: columns }, (_, i) => ({
-            id: i,
-            left: (i / columns) * 100,
-            duration: 10 + Math.random() * 12, // a tad slower
-            delay: -Math.random() * 20,
-            stream: makeStream()
-        }));
-    }, []);
+        return Array.from({ length: columns }, (_, colIndex) => {
+            const charObjects = Array.from({ length: streamLength }, (_, i) => {
+                const ch = chars[Math.floor(Math.random() * chars.length)];
+                const minO = (Math.random() * 0.25).toFixed(2);
+                const delay = (Math.random() * 4).toFixed(2);
+                const dur = (charSpeedMin + Math.random() * charSpeedVar).toFixed(2);
+                return {
+                    key: i,
+                    ch,
+                    style: {
+                        '--min-o': minO,
+                        animationDuration: `${dur}s`,
+                        animationDelay: `${delay}s`
+                    }
+                };
+            });
+            return {
+                id: colIndex,
+                left: (colIndex / columns) * 100,
+                duration: charSpeedMin + Math.random() * charSpeedVar + columnBaseDurationOffset,
+                delay: -Math.random() * columnDelayMax,
+                chars: charObjects
+            };
+        });
+    }
+
+    const codeRainColumns = useMemo(() => buildRain(24, 34, 50, 2, 6, 18), []);
+    const codeRainColumnsLower = useMemo(() => buildRain(24, 36, 50, 2, 4, 20), []);
 
     const gradientRefs = {
         gradient1: useRef(null),
@@ -87,55 +84,10 @@ function Hero() {
         gradient5: useRef(null)
     };
 
-    // Handle mouse movement
+    // Mouse parallax without triggering React renders each frame
     useEffect(() => {
         const hero = heroRef.current;
         if (!hero) return;
-        let frame = null;
-        let lastEvent = null;
-        const handleMouseMove = (e) => {
-            lastEvent = e;
-            if (frame === null) {
-                frame = requestAnimationFrame(() => {
-                    frame = null;
-                    if (!lastEvent) return;
-                    const { clientX, clientY } = lastEvent;
-                    const { left, top, width, height } = hero.getBoundingClientRect();
-                    const x = (clientX - left) / width;
-                    const y = (clientY - top) / height;
-                    setMousePosition({ x, y });
-                    setIsHovering(true);
-                });
-            }
-        };
-        const handleMouseLeave = () => {
-            setIsHovering(false);
-        };
-        hero.addEventListener('mousemove', handleMouseMove, { passive: true });
-        hero.addEventListener('mouseleave', handleMouseLeave, { passive: true });
-        return () => {
-            hero.removeEventListener('mousemove', handleMouseMove);
-            hero.removeEventListener('mouseleave', handleMouseLeave);
-            if (frame) cancelAnimationFrame(frame);
-        };
-    }, []);
-
-    // Apply the transform effect
-    useEffect(() => {
-        if (!isHovering) {
-            // Reset positions with smooth transition when mouse leaves
-            for (const key in gradientRefs) {
-                if (gradientRefs[key].current) {
-                    gradientRefs[key].current.style.transform = 'translate(0px, 0px)';
-                }
-            }
-            return;
-        }
-
-        // Get mouse position
-        const { x, y } = mousePosition;
-
-        // Configure different sensitivities for each gradient
         const gradientConfig = {
             gradient1: { speed: 120, delay: 0.02, inverse: false },
             gradient2: { speed: 90, delay: 0.04, inverse: true },
@@ -143,31 +95,43 @@ function Hero() {
             gradient4: { speed: 60, delay: 0.05, inverse: true },
             gradient5: { speed: 180, delay: 0.01, inverse: false }
         };
-
-        // Update each gradient position
-        for (const key in gradientRefs) {
-            if (gradientRefs[key].current) {
-                const element = gradientRefs[key].current;
-                const { speed, inverse } = gradientConfig[key];
-
-                // Calculate position based on mouse coordinates
-                // Center point is 0.5, 0.5
-                const translateX = inverse
-                    ? (0.5 - x) * speed
-                    : (x - 0.5) * speed;
-
-                const translateY = inverse
-                    ? (0.5 - y) * speed
-                    : (y - 0.5) * speed;
-
-                // Set transition delay for more organic movement
-                element.style.transitionDelay = `${gradientConfig[key].delay}s`;
-
-                // Apply the transform
-                element.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        let rafId = null;
+        let lastX = 0.5;
+        let lastY = 0.5;
+        function apply() {
+            for (const key in gradientRefs) {
+                const ref = gradientRefs[key];
+                const cfg = gradientConfig[key];
+                if (!ref.current || !cfg) continue;
+                const { speed, inverse } = cfg;
+                const x = inverse ? (0.5 - lastX) : (lastX - 0.5);
+                const y = inverse ? (0.5 - lastY) : (lastY - 0.5);
+                ref.current.style.transitionDelay = `${cfg.delay}s`;
+                ref.current.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            }
+            rafId = null;
+        }
+        function handleMove(e) {
+            const rect = hero.getBoundingClientRect();
+            lastX = (e.clientX - rect.left) / rect.width;
+            lastY = (e.clientY - rect.top) / rect.height;
+            if (rafId == null) rafId = requestAnimationFrame(apply);
+        }
+        function handleLeave() {
+            isHoveringRef.current = false;
+            for (const key in gradientRefs) {
+                const ref = gradientRefs[key];
+                if (ref.current) ref.current.style.transform = 'translate(0px, 0px)';
             }
         }
-    }, [mousePosition, isHovering]);
+        hero.addEventListener('mousemove', handleMove, { passive: true });
+        hero.addEventListener('mouseleave', handleLeave, { passive: true });
+        return () => {
+            hero.removeEventListener('mousemove', handleMove);
+            hero.removeEventListener('mouseleave', handleLeave);
+            if (rafId) cancelAnimationFrame(rafId);
+        };
+    }, []);
 
     const handleBioEdit = () => {
         setIsEditing(true);
@@ -268,39 +232,12 @@ function Hero() {
             </div>
 
             {/* Code rain overlay limited to hero title height */}
-            <div
-                className="code-rain"
-                style={{ '--code-rain-height': `${rainHeight}px` }}
-                aria-hidden
-            >
+            <div className="code-rain" style={{ '--code-rain-height': `${rainHeight}px` }} aria-hidden>
                 {codeRainColumns.map(col => (
-                    <div
-                        key={col.id}
-                        className="code-rain__column"
-                        style={{
-                            left: `${col.left}%`,
-                            animationDuration: `${col.duration}s`,
-                            animationDelay: `${col.delay}s`
-                        }}
-                    >
-                        {col.stream.split('').map((ch, i) => {
-                            const minO = (Math.random() * 0.25).toFixed(2); // 0 - 0.25
-                            const delay = (Math.random() * 4).toFixed(2);    // 0 - 4s
-                            const dur = (2 + Math.random() * 6).toFixed(2);  // 2 - 8s
-                            return (
-                                <span
-                                    key={i}
-                                    className="code-rain__char"
-                                    style={{
-                                        '--min-o': minO,
-                                        animationDuration: `${dur}s`,
-                                        animationDelay: `${delay}s`
-                                    }}
-                                >
-                                    {ch}
-                                </span>
-                            );
-                        })}
+                    <div key={col.id} className="code-rain__column" style={{ left: `${col.left}%`, animationDuration: `${col.duration}s`, animationDelay: `${col.delay}s` }}>
+                        {col.chars.map(c => (
+                            <span key={c.key} className="code-rain__char" style={c.style}>{c.ch}</span>
+                        ))}
                     </div>
                 ))}
             </div>
@@ -334,11 +271,7 @@ function Hero() {
             </div>
 
             {/* Lower code rain overlay (from social links down) */}
-            <div
-                className="code-rain-lower"
-                style={{ top: `${lowerRainStart}px`, height: `${lowerRainHeight}px` }}
-                aria-hidden
-            >
+            <div className="code-rain-lower" style={{ top: `${lowerRainStart}px`, height: `${lowerRainHeight}px` }} aria-hidden>
                 {codeRainColumnsLower.map(col => (
                     <div
                         key={col.id}
@@ -349,24 +282,9 @@ function Hero() {
                             animationDelay: `${col.delay}s`
                         }}
                     >
-                        {col.stream.split('').map((ch, i) => {
-                            const minO = (Math.random() * 0.25).toFixed(2);
-                            const delay = (Math.random() * 4).toFixed(2);
-                            const dur = (2 + Math.random() * 4).toFixed(2);
-                            return (
-                                <span
-                                    key={i}
-                                    className="code-rain__char"
-                                    style={{
-                                        '--min-o': minO,
-                                        animationDuration: `${dur}s`,
-                                        animationDelay: `${delay}s`
-                                    }}
-                                >
-                                    {ch}
-                                </span>
-                            );
-                        })}
+                        {col.chars.map(c => (
+                            <span key={c.key} className="code-rain__char" style={c.style}>{c.ch}</span>
+                        ))}
                     </div>
                 ))}
             </div>

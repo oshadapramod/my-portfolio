@@ -75,6 +75,12 @@ function Navbar() {
                         Skills
                     </button>
                     <button
+                        className={`nav-item ${activeSection === 'certifications' ? 'active' : ''}`}
+                        onClick={() => handleNavClick('certifications')}
+                    >
+                        Certifications
+                    </button>
+                    <button
                         className={`nav-item ${activeSection === 'portfolio' ? 'active' : ''}`}
                         onClick={() => handleNavClick('portfolio')}
                     >

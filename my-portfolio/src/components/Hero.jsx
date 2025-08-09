@@ -34,7 +34,7 @@ function Hero() {
     // Auto-hide notice after 3s (trigger graceful close)
     useEffect(() => {
         if (!showNotice) return;
-        const auto = setTimeout(() => startNoticeClose(), 3000);
+        const auto = setTimeout(() => startNoticeClose(), 10000);
         return () => clearTimeout(auto);
     }, [showNotice]);
 

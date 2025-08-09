@@ -31,7 +31,7 @@ function Services() {
             <div className="facebook-section">
                 <div className="facebook-content">
                     <p className="facebook-paragraph">
-                        I’m passionate about graphic design — from flyers and logos to eye-catching social media posts.
+                        Also, I’m passionate about graphic design — from flyers and logos to eye-catching social media posts.
                         Check out my latest work on my Facebook page and feel free to reach out!                    </p>
                     <div className="read-more-btn">
                         <span className="line"></span>

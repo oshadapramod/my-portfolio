@@ -1,5 +1,5 @@
 // src/components/Footer.jsx
-import { FaFacebook, FaInstagram, FaArrowUp, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaArrowUp, FaLinkedin, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import './Footer.css';
 
 function Footer() {
@@ -14,7 +14,9 @@ function Footer() {
         <footer className="footer">
             <div className="container">
                 <button className="back-to-top" onClick={scrollToTop}>
-                    <FaArrowUp />
+                    <span className="arrow-icon">
+                        <FaArrowUp />
+                    </span>
                     <span>BACK TO TOP</span>
                 </button>
 
@@ -25,8 +27,14 @@ function Footer() {
                     <a href="https://www.instagram.com/prrrramod/" className="footer-social-link">
                         <FaInstagram />
                     </a>
+                    <a href="https://www.linkedin.com/in/oshadapramod/" className="footer-social-link">
+                        <FaLinkedin />
+                    </a>
                     <a href="https://wa.me/+94702862408" className="footer-social-link">
                         <FaWhatsapp />
+                    </a>
+                    <a href="mailto:oshadapramod99@gmail.com" className="footer-social-link">
+                        <FaEnvelope />
                     </a>
                 </div>
 

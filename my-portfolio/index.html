@@ -5,6 +5,10 @@
     <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oshada Pramod</title>
+    <!-- Preload critical hero image to improve LCP -->
+  <link rel="preload" as="image" href="/src/assets/hero-image.png" fetchpriority="high" />
+  <!-- Fallback preload for production build (copy hero-image.png to public/) -->
+  <link rel="preload" as="image" href="/hero-image.png" media="(max-width: 2400px)" />
   </head>
   <body>
     <div id="root"></div>

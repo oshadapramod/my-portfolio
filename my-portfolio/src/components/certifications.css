@@ -1,0 +1,297 @@
+:root {
+    --primary-color: var(--color-black, #000000);
+    --secondary-color: var(--color-white, #FFFFFF);
+    --accent-color: #919191;
+    --text-primary: var(--color-black, #000000);
+    --text-secondary: var(--color-white, #FFFFFF);
+    --gradient-dark: linear-gradient(90.18deg, #1D1D1D 31.74%, #1D1D1D 90.49%);
+}
+
+.certifications {
+    width: 100%;
+    background: #FFFFFF;
+    padding: 112px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.certifications .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.certifications .section-header {
+    width: 394px;
+    height: 67px;
+    border: 6px solid #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 80px;
+}
+
+.certifications .section-header h2 {
+    font-family: 'Bricolage Grotesque', var(--font-bricolage), sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 38px;
+    text-align: center;
+    letter-spacing: 0.35538em;
+    color: #000000;
+    margin: 0;
+}
+
+/* Layout */
+.certifications .content-wrapper {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.certifications .left-section {
+    flex: 0 0 220px;
+    padding: 0rem 0rem;
+    color: var(--text-secondary);
+    justify-content: center;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.certifications .left-section h3 {
+    font-family: 'Bricolage Grotesque', var(--font-bricolage), sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.certifications .left-section h4 {
+    font-family: 'Bricolage Grotesque', var(--font-bricolage), sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #de0000;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.certifications .left-section p {
+    font-family: 'Bricolage Grotesque', var(--font-bricolage), sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #1D1D1D;
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+}
+
+.certifications .know-more-arrow-icon {
+    display: inline-block;
+    margin-left: 0.4rem;
+    margin-top: 0.15rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.certifications .know-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #000000;
+    color: #FFFFFF;
+    padding: 10px 22px;
+    font-family: 'Bricolage Grotesque', var(--font-bricolage), sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.15em;
+}
+
+.certifications .know-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.certifications .know-more-btn:hover .know-more-arrow-icon {
+    transform: translateX(4px);
+}
+
+.certifications .certificates-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+.certifications .certificate-card {
+    background: var(--secondary-color);
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.certifications .certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.certifications .certificate-image {
+    width: 100%;
+    /* Maintain horizontal aspect ratio ~1.294:1 (w:h) */
+    aspect-ratio: 1.294 / 1;
+    height: auto;
+    background: #F5F5F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #E0E0E0;
+    position: relative;
+    overflow: hidden;
+}
+
+.certifications .certificate-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.certifications .certificate-placeholder {
+    width: 80px;
+    height: 80px;
+    background: #E0E0E0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+/* Fallback for browsers without aspect-ratio support */
+@supports not (aspect-ratio: 1 / 1) {
+    .certifications .certificate-image {
+        position: relative;
+        height: 0;
+        padding-top: 77.3%;
+        /* 1 / 1.294 ≈ 0.773 */
+    }
+
+    .certifications .certificate-image>img,
+    .certifications .certificate-image>.certificate-placeholder {
+        position: absolute;
+        inset: 0;
+    }
+}
+
+.certifications .certificate-content {
+    padding: 0;
+    text-align: center;
+}
+
+.certifications .certificate-title-section {
+    box-sizing: border-box;
+    background: #b9b9b9;
+    height: 70px;
+    /* No parent padding now, so fill edge-to-edge */
+    margin: 0;
+    /* Keep spacing before subtitle */
+    margin-bottom: 0.5rem;
+    /* Internal padding for text */
+    padding: 0.75rem 1rem;
+    /* Extend background beneath card borders to avoid 1px gaps from AA/rounding */
+    margin-left: -2px;
+    margin-right: -2px;
+    /* Center the title vertically (works with fixed height or min-height) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.certifications .certificate-title-section .certificate-title {
+    margin: 0;
+}
+
+/* Re-introduce horizontal padding for text below the title section */
+.certifications .certificate-subtitle,
+.certifications .certificate-institution {
+    padding: 0 1rem 0.5rem;
+}
+
+.certifications .certificate-title {
+    font-family: 'Bricolage Grotesque', var(--font-bricolage), sans-serif;
+    font-size: 0.941rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.certifications .certificate-subtitle {
+    font-family: 'Bricolage Grotesque', var(--font-bricolage), sans-serif;
+    font-size: 0.975rem;
+    color: #515151;
+    margin-bottom: 0.1rem;
+    line-height: 1.4;
+}
+
+.certifications .certificate-institution {
+    font-family: 'Bricolage Grotesque', var(--font-bricolage), sans-serif;
+    font-size: 0.8rem;
+    color: #000360;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.7rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .certifications .content-wrapper {
+        flex-direction: column;
+        gap: 3rem;
+        align-items: stretch;
+    }
+
+    .certifications .left-section {
+        flex: none;
+        position: static;
+    }
+
+    .certifications .certificates-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .certifications .certificates-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .certifications .section-header {
+        width: 364px;
+        height: 64px;
+    }
+
+    .certifications .section-header h2 {
+        font-size: 24px;
+    }
+
+    .certifications .left-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .certifications .container {
+        padding: 0 16px;
+    }
+}

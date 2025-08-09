@@ -45,6 +45,15 @@
   letter-spacing: 0.18538em;
 }
 
+.back-to-top .arrow-icon {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.back-to-top:hover .arrow-icon {
+  transform: translateX(-5px);
+}
+
 .footer-social-links {
   display: flex;
   justify-content: center;

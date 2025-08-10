@@ -2,7 +2,7 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiCredly } from "react-icons/si";
 import { HiMegaphone } from "react-icons/hi2";
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import heroImage from '../assets/hero-image.png';
 import bioGif from '../assets/bio-gif.gif';
 import './Hero.css';
@@ -33,26 +33,37 @@ function Hero() {
 
     // Auto-hide notice after 3s (trigger graceful close)
     useEffect(() => {
-        if (!showNotice) return;
-        const auto = setTimeout(() => startNoticeClose(), 10000);
-        return () => clearTimeout(auto);
-    }, [showNotice]);
+        if (showNotice) {
+            const auto = setTimeout(startNoticeClose, 10000);
+            return () => clearTimeout(auto);
+        }
+    }, [showNotice, startNoticeClose]);
 
     // Cleanup on unmount
     useEffect(() => () => { if (noticeTimeoutRef.current) clearTimeout(noticeTimeoutRef.current); }, []);
 
     // Build & memoize rain structure (columns + per-char style) once to avoid regenerating each render
-    function buildRain(columns, baseLength, extraVisiblePx, charSpeedMin, charSpeedVar, columnDelayMax, columnBaseDurationOffset = 6) {
+    const buildRain = useCallback((
+        columns,
+        baseLength,
+        extraVisiblePx,
+        charSpeedMin,
+        charSpeedVar,
+        columnDelayMax,
+        columnBaseDurationOffset = 6
+    ) => {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         const lineHeightPx = 16;
         const extraChars = Math.ceil(extraVisiblePx / lineHeightPx);
         const streamLength = baseLength + extraChars;
+
         return Array.from({ length: columns }, (_, colIndex) => {
             const charObjects = Array.from({ length: streamLength }, (_, i) => {
                 const ch = chars[Math.floor(Math.random() * chars.length)];
                 const minO = (Math.random() * 0.25).toFixed(2);
                 const delay = (Math.random() * 4).toFixed(2);
                 const dur = (charSpeedMin + Math.random() * charSpeedVar).toFixed(2);
+
                 return {
                     key: i,
                     ch,
@@ -63,6 +74,7 @@ function Hero() {
                     }
                 };
             });
+
             return {
                 id: colIndex,
                 left: (colIndex / columns) * 100,
@@ -71,7 +83,7 @@ function Hero() {
                 chars: charObjects
             };
         });
-    }
+    }, []);
 
     const codeRainColumns = useMemo(() => buildRain(24, 34, 50, 2, 6, 18), []);
     const codeRainColumnsLower = useMemo(() => buildRain(24, 36, 50, 2, 4, 20), []);
@@ -158,20 +170,20 @@ function Hero() {
     // Measure hero title offset (upper rain) & social links (lower rain)
     useEffect(() => {
         function updateRainHeight() {
-            if (heroRef.current && heroTitleRef.current) {
-                const heroRect = heroRef.current.getBoundingClientRect();
+            if (!heroRef.current) return;
+            const heroRect = heroRef.current.getBoundingClientRect();
+
+            if (heroTitleRef.current) {
                 const titleRect = heroTitleRef.current.getBoundingClientRect();
-                const h = Math.max(0, titleRect.top - heroRect.top); // distance from top of hero to top of title
-                setRainHeight(h);
+                setRainHeight(Math.max(0, titleRect.top - heroRect.top));
             }
-            if (heroRef.current && socialLinksRef.current) {
-                const heroRect = heroRef.current.getBoundingClientRect();
+
+            if (socialLinksRef.current) {
                 const linksRect = socialLinksRef.current.getBoundingClientRect();
                 const start = Math.max(0, linksRect.top - heroRect.top);
                 const totalH = heroRect.height;
-                const lowerH = Math.max(0, totalH - start);
                 setLowerRainStart(start);
-                setLowerRainHeight(lowerH);
+                setLowerRainHeight(Math.max(0, totalH - start));
             }
         }
         updateRainHeight();
@@ -252,13 +264,24 @@ function Hero() {
 
                     <div className="social-links">
                         {/* ref on social links for lower code rain positioning */}
-                        <a href="https://github.com/oshadapramod/" className="social-link">
+                        <a href="https://github.com/oshadapramod/"
+                            className="social-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <FaGithub />
                         </a>
-                        <a href="https://www.linkedin.com/in/oshadapramod/" className="social-link">
+                        <a href="https://www.linkedin.com/in/oshadapramod/"
+                            className="social-link"
+                            target="_blank"
+                            rel="noopener noreferrer">
                             <FaLinkedin />
                         </a>
-                        <a href="https://www.credly.com/users/oshada-pramod-nandarathna" className="social-link credly-link">
+                        <a href="https://www.credly.com/users/oshada-pramod-nandarathna"
+                            className="social-link credly-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <SiCredly />
                         </a>
                         <span ref={socialLinksRef} style={{ position: 'absolute', top: 0, left: 0, width: 0, height: 0 }} />

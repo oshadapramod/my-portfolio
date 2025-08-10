@@ -35,7 +35,11 @@ function Services() {
                         Check out my latest work on my Facebook page and feel free to reach out!                    </p>
                     <div className="read-more-btn">
                         <span className="line"></span>
-                        <button onClick={() => window.location.href = 'https://www.facebook.com/des.by.op'}>
+                        <button
+                            onClick={() =>
+                                window.open('https://www.facebook.com/des.by.op', '_blank', 'noopener,noreferrer')
+                            }
+                        >
                             SEE SOME OF MY WORKS
                         </button>
                         <span className="line"></span>

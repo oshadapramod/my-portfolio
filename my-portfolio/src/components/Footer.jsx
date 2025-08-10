@@ -21,19 +21,39 @@ function Footer() {
                 </button>
 
                 <div className="footer-social-links">
-                    <a href="https://www.facebook.com/oshadapramod" className="footer-social-link">
+                    <a href="https://www.facebook.com/oshadapramod"
+                        className="footer-social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <FaFacebook />
                     </a>
-                    <a href="https://www.instagram.com/prrrramod/" className="footer-social-link">
+                    <a href="https://www.instagram.com/prrrramod/"
+                        className="footer-social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <FaInstagram />
                     </a>
-                    <a href="https://www.linkedin.com/in/oshadapramod/" className="footer-social-link">
+                    <a href="https://www.linkedin.com/in/oshadapramod/"
+                        className="footer-social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <FaLinkedin />
                     </a>
-                    <a href="https://wa.me/+94702862408" className="footer-social-link">
+                    <a href="https://wa.me/+94702862408"
+                        className="footer-social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <FaWhatsapp />
                     </a>
-                    <a href="mailto:oshadapramod99@gmail.com" className="footer-social-link">
+                    <a href="mailto:oshadapramod99@gmail.com"
+                        className="footer-social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <FaEnvelope />
                     </a>
                 </div>

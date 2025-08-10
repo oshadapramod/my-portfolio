@@ -231,6 +231,7 @@
     animation-name: codeCharBlinkVar;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    will-change: transform, opacity;
 }
 
 .code-rain__column span:nth-child(odd) {

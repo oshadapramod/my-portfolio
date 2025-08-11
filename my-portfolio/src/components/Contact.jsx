@@ -1,11 +1,8 @@
 // src/components/Contact.jsx
 import { useState, useRef, useEffect } from 'react';
 import emailjs from 'emailjs-com';
-import lottie from 'lottie-web';
 import './Contact.css';
-// Import your Lottie JSON file
-// Assuming you'll place it in the assets folder
-import successAnimation from '../assets/success.json';
+// NOTE: lottie-web & JSON are dynamically imported only when needed to cut initial bundle size.
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -21,29 +18,31 @@ function Contact() {
     const animationInstance = useRef(null);
 
     useEffect(() => {
-        // Initialize animation but don't play it yet
-        if (showSuccessAnimation && animationContainer.current) {
-            animationInstance.current = lottie.loadAnimation({
-                container: animationContainer.current,
-                renderer: 'svg',
-                loop: false,
-                autoplay: true,
-                animationData: successAnimation
-            });
-
-            // Reset form and animation state after animation completes
-            animationInstance.current.addEventListener('complete', () => {
-                setTimeout(() => {
-                    setShowSuccessAnimation(false);
-                }, 1000); // Keep showing for a bit after completion
-            });
-
-            return () => {
-                if (animationInstance.current) {
-                    animationInstance.current.destroy();
-                }
-            };
+        // Dynamically load animation assets when needed
+        if (showSuccessAnimation && animationContainer.current && !animationInstance.current) {
+            (async () => {
+                const [{ default: lottie }, successAnimation] = await Promise.all([
+                    import('lottie-web'),
+                    import('../assets/success.json')
+                ]);
+                animationInstance.current = lottie.loadAnimation({
+                    container: animationContainer.current,
+                    renderer: 'svg',
+                    loop: false,
+                    autoplay: true,
+                    animationData: successAnimation.default || successAnimation
+                });
+                animationInstance.current.addEventListener('complete', () => {
+                    setTimeout(() => setShowSuccessAnimation(false), 1000);
+                });
+            })();
         }
+        return () => {
+            if (!showSuccessAnimation && animationInstance.current) {
+                animationInstance.current.destroy();
+                animationInstance.current = null;
+            }
+        };
     }, [showSuccessAnimation]);
 
     const handleChange = (e) => {
@@ -94,6 +93,7 @@ function Contact() {
                 'nvZ6uhx72Qwtp5ta-' // Replace with your EmailJS public key
             ).then(() => {
                 // Show animation instead of alert
+                // Trigger lazy animation load
                 setShowSuccessAnimation(true);
 
                 // Reset form

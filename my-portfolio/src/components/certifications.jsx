@@ -1,8 +1,9 @@
 import './certifications.css';
 import { FaArrowRight } from 'react-icons/fa';
+import { memo } from 'react';
 
 
-const Certifications = () => {
+const CertificationsComponent = () => {
     const certificates = [
         {
             id: 1,
@@ -110,4 +111,5 @@ const Certifications = () => {
     );
 };
 
+const Certifications = memo(CertificationsComponent);
 export default Certifications;

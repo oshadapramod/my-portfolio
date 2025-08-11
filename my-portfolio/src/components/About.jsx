@@ -29,9 +29,10 @@ import {
     DiScrum
 } from "react-icons/di";
 
+import { memo } from 'react';
 import './About.css';
 
-function About() {
+function AboutComponent() {
     // Define brand colors for each technology
     const iconColors = {
         Docker: "#2496ED",               // SiDocker - Docker Blue
@@ -123,4 +124,5 @@ function About() {
     );
 }
 
+const About = memo(AboutComponent);
 export default About;

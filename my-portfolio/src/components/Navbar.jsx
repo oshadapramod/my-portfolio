@@ -1,49 +1,70 @@
 // src/components/Navbar.jsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 import './Navbar.css';
 
-function Navbar() {
-    const [activeSection, setActiveSection] = useState('about');
+function NavbarComponent() {
+    const [activeSection, setActiveSection] = useState(null); // nothing at start
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [manualLock, setManualLock] = useState(false); // prevent observer override right after click
+    const lockTimer = useRef(null);
 
-    // Handle scrolling effect
+    // Sections that can become active (exclude hero/contact/footer)
+    const watchSections = ['about', 'skills', 'certifications', 'portfolio'];
+
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-
-            // Also determine active section based on scroll position
-            const sections = ['about', 'skills', 'portfolio', 'contact'];
-            const scrollPosition = window.scrollY + 100;
-
-            for (const section of sections) {
-                const element = document.getElementById(section);
-                if (element) {
-                    const offsetTop = element.offsetTop;
-                    const height = element.offsetHeight;
-
-                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
-                        setActiveSection(section);
-                        break;
-                    }
-                }
-            }
+            setScrolled(window.scrollY > 50);
         };
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // IntersectionObserver to auto-set active section
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -40% 0px', // favor section nearer top
+            threshold: [0.25, 0.5, 0.75]
+        };
+
+        const handler = (entries) => {
+            if (manualLock) return;
+            // Pick the section most in view
+            const visible = entries
+                .filter(e => e.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (visible.length > 0) {
+                const id = visible[0].target.id;
+                if (watchSections.includes(id)) {
+                    setActiveSection(id);
+                    return;
+                }
+            }
+
+            // If none of the watched sections visible, clear highlight
+            setActiveSection(null);
+        };
+
+        const observer = new IntersectionObserver(handler, observerOptions);
+
+        watchSections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+
+        return () => observer.disconnect();
+    }, [manualLock]);
+
     const handleNavClick = (section) => {
+        // Manual selection
         setActiveSection(section);
         setMenuOpen(false);
-
-        // Scroll to the specific section for all navigation items
+        setManualLock(true);
+        if (lockTimer.current) clearTimeout(lockTimer.current);
+        lockTimer.current = setTimeout(() => setManualLock(false), 1200); // release after scroll animation
         const element = document.getElementById(section);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
@@ -87,7 +108,7 @@ function Navbar() {
                         Portfolio
                     </button>
                     <button
-                        className="nav-item contact-btn"
+                        className={`nav-item contact-btn ${activeSection === 'contact' ? 'active' : ''}`}
                         onClick={() => handleNavClick('contact')}
                     >
                         CONTACT ME
@@ -98,4 +119,5 @@ function Navbar() {
     );
 }
 
+const Navbar = memo(NavbarComponent);
 export default Navbar;

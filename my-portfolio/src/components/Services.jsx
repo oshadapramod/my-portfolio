@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import './Services.css';
 
-function Services() {
+function ServicesComponent() {
     return (
         <section className="services" id="about">
             <div className="container">
@@ -50,4 +51,5 @@ function Services() {
     );
 }
 
+const Services = memo(ServicesComponent);
 export default Services;

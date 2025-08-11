@@ -2,12 +2,12 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiCredly } from "react-icons/si";
 import { HiMegaphone } from "react-icons/hi2";
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback, memo } from 'react';
 import heroImage from '../assets/hero-image.png';
 import bioGif from '../assets/bio-gif.gif';
 import './Hero.css';
 
-function Hero() {
+function HeroComponent() {
     const heroRef = useRef(null);
     const heroTitleRef = useRef(null);
     const socialLinksRef = useRef(null);
@@ -324,4 +324,5 @@ function Hero() {
     );
 }
 
+const Hero = memo(HeroComponent);
 export default Hero;

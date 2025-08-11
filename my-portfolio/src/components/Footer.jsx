@@ -1,8 +1,9 @@
 // src/components/Footer.jsx
 import { FaFacebook, FaInstagram, FaArrowUp, FaLinkedin, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import './Footer.css';
+import { memo } from 'react';
 
-function Footer() {
+function FooterComponent() {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -66,4 +67,5 @@ function Footer() {
     );
 }
 
+const Footer = memo(FooterComponent);
 export default Footer;

@@ -1,5 +1,5 @@
 // src/components/Portfolio.jsx
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import railgoImage from '../assets/railgo.jpg';
 import macom from '../assets/macom.png';
 import spiritx from '../assets/spiritx.png';
@@ -135,7 +135,7 @@ function Portfolio() {
 }
 
 // Project card component
-function ProjectCard({ project }) {
+const ProjectCard = memo(function ProjectCard({ project }) {
     const isOngoing = project.demoLink === "#";
 
     const handleCardClick = () => {
@@ -151,10 +151,10 @@ function ProjectCard({ project }) {
             onClick={handleCardClick}
             style={{ cursor: !isOngoing ? 'pointer' : 'default' }}
         >
-            <div
-                className="project-image"
-                style={{ backgroundImage: `url(${project.image})` }}
-            ></div>
+            {/* Use img for better loading hints; CSS unchanged (project-image class) */}
+            <div className="project-image">
+                <img src={project.image} alt={project.title} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
             <div className="project-overlay">
                 <div className="project-header">
                     <h3 className="project-title">{project.title}</h3>
@@ -190,6 +190,6 @@ function ProjectCard({ project }) {
             )}
         </div>
     );
-}
+});
 
 export default Portfolio;

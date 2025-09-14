@@ -39,19 +39,19 @@ const CertificationsComponent = () => {
         },
         {
             id: 5,
+            title: "AWS Cloud Technical Essentials",
+            subtitle: "Course Certificate",
+            institution: "Amazon Web Services",
+            link: "https://coursera.org/share/636b153e63e21a3c6dce8fd001076091",
+            image: "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~1D2Z2FQXTBB4/CERTIFICATE_LANDING_PAGE~1D2Z2FQXTBB4.jpeg"
+        },
+        {
+            id: 6,
             title: "Blockchain Basics",
             subtitle: "Course Certificate",
             institution: "University at Buffalo",
             link: "https://coursera.org/share/1b757ae20a420086fed3011335624330",
             image: "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~A4M13Q1RLLUA/CERTIFICATE_LANDING_PAGE~A4M13Q1RLLUA.jpeg"
-        },
-        {
-            id: 6,
-            title: "Smart Contracts",
-            subtitle: "Course Certificate",
-            institution: "University at Buffalo",
-            link: "https://coursera.org/share/e52f7df8b034205baed7c6e2834ec295",
-            image: "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~6A2WAOE1X5IM/CERTIFICATE_LANDING_PAGE~6A2WAOE1X5IM.jpeg"
         }
     ];
 

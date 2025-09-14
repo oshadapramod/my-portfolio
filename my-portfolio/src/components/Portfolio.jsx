@@ -6,7 +6,7 @@ import spiritx from '../assets/spiritx.png';
 import running from '../assets/running.png';
 import ibmCapstoneImage from '../assets/ibmCapstoneImage.png';
 import cicdProjectImage from '../assets/cicdProjectImage.png';
-import deep from '../assets/deep.jpg';
+import neon_snake from '../assets/neon_snake.png';
 import evoting from '../assets/evoting.jpg';
 import './Portfolio.css';
 
@@ -30,32 +30,32 @@ function Portfolio() {
         },
         {
             id: 3,
+            title: "Neon Snake",
+            description: "A browser-based game that I developed, containerized, and deployed on the cloud with a fully automated CI/CD pipeline.",
+            image: neon_snake,
+            demoLink: "http://35.153.143.151/",
+            moreLink: "https://github.com/oshadapramod/snake-game.git"
+        },
+        {
+            id: 4,
             title: "Dept Wise",
             description: "Management Assistant Web App for Computer Engineering Department.",
             image: macom,
             demoLink: "https://github.com/PasinduChandrasiri/MA-COM.git"
         },
         {
-            id: 4,
+            id: 5,
             title: "Rail Go",
             description: "Smart Railway Payment System using RFID Cards.",
             image: railgoImage,
             demoLink: "https://github.com/oshadapramod/SmartRailwayPayment.git"
         },
         {
-            id: 5,
+            id: 6,
             title: "SpiritX - Cricket Fantasy AI Assistant",
             description: "An intelligent chatbot for cricket fantasy leagues.",
             image: spiritx,
             demoLink: "https://github.com/oshadapramod/SpiritX_CrypticHackers_02.git"
-        },
-        {
-            id: 6,
-            title: "Image Captioning System",
-            description: "A deep learning model that generates human-like captions for images using CNN-LSTM architecture.",
-            image: deep,
-            demoLink: "https://example.com/task-demo",
-            moreLink: "https://example.com/task-details"
         },
     ];
 

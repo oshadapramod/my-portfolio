@@ -15,17 +15,18 @@
   <link rel="preload" as="image" href="/hero-image.png" media="(max-width: 2400px)" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#000000" />
-    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable" />
+  <!-- Removed long-term immutable Cache-Control during development to allow HMR updates. Re-add (on build output only) if needed for production. -->
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-      <script>
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js').catch(() => {});
-          });
-        }
-      </script>
+    <script>
+      // Only register service worker in production builds.
+      if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>

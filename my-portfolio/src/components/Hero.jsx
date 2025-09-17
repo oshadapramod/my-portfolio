@@ -96,7 +96,7 @@ function HeroComponent() {
         gradient5: useRef(null)
     };
 
-    // Mouse parallax without triggering React renders each frame
+    // Mouse parallax (desktop / tablet only). Disabled on narrow screens (<=576px) to reduce motion.
     useEffect(() => {
         const hero = heroRef.current;
         if (!hero) return;
@@ -110,6 +110,7 @@ function HeroComponent() {
         let rafId = null;
         let lastX = 0.5;
         let lastY = 0.5;
+        let enabled = false;
         function apply() {
             for (const key in gradientRefs) {
                 const ref = gradientRefs[key];
@@ -124,23 +125,44 @@ function HeroComponent() {
             rafId = null;
         }
         function handleMove(e) {
+            if (!enabled) return;
             const rect = hero.getBoundingClientRect();
             lastX = (e.clientX - rect.left) / rect.width;
             lastY = (e.clientY - rect.top) / rect.height;
             if (rafId == null) rafId = requestAnimationFrame(apply);
         }
         function handleLeave() {
+            if (!enabled) return;
             isHoveringRef.current = false;
             for (const key in gradientRefs) {
                 const ref = gradientRefs[key];
                 if (ref.current) ref.current.style.transform = 'translate(0px, 0px)';
             }
         }
+        function enable() {
+            if (enabled) return;
+            enabled = true;
+        }
+        function disable() {
+            if (!enabled) return;
+            enabled = false;
+            // Reset transforms when disabling
+            for (const key in gradientRefs) {
+                const ref = gradientRefs[key];
+                if (ref.current) ref.current.style.transform = 'translate(0px, 0px)';
+            }
+        }
+        function evaluate() {
+            if (window.innerWidth > 576) enable(); else disable();
+        }
         hero.addEventListener('mousemove', handleMove, { passive: true });
         hero.addEventListener('mouseleave', handleLeave, { passive: true });
+        window.addEventListener('resize', evaluate);
+        evaluate();
         return () => {
             hero.removeEventListener('mousemove', handleMove);
             hero.removeEventListener('mouseleave', handleLeave);
+            window.removeEventListener('resize', evaluate);
             if (rafId) cancelAnimationFrame(rafId);
         };
     }, []);

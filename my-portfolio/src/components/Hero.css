@@ -889,29 +889,21 @@
 /* Only showing the mobile media query changes */
 @media (max-width: 576px) {
 
-    /* Disable parallax/animations except code rain on very small screens */
+    /* Mobile: hide code rain entirely */
+    .code-rain,
+    .code-rain-lower {
+        display: none !important;
+    }
+
+    /* Restore / keep animated colorful gradients on mobile */
     .background-gradient {
-        animation: none !important;
-        transform: none !important;
-        /* keep subtle static glow */
-        opacity: 0.28 !important;
+        opacity: 0.45;
+        animation-play-state: running !important;
     }
 
     .devops-grid {
-        animation: none !important;
-        transform: perspective(800px) rotateX(28deg) skewY(-6deg) translateY(0) !important;
-        opacity: 0.4 !important;
-    }
-
-    /* Ensure code rain still visible */
-    .code-rain,
-    .code-rain-lower {
-        opacity: 1;
-    }
-
-    /* Remove transition side-effects from JS transforms (parallax disabled) */
-    .background-gradient {
-        transition: none !important;
+        animation-play-state: running !important;
+        opacity: 0.55;
     }
 
     .hero {

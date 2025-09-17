@@ -19,6 +19,7 @@ function HeroComponent() {
     const [lowerRainStart, setLowerRainStart] = useState(0);
     const [lowerRainHeight, setLowerRainHeight] = useState(0);
     const [showNotice, setShowNotice] = useState(true); // controls mount
+    const [isMobile, setIsMobile] = useState(false);
     const [noticeClosing, setNoticeClosing] = useState(false); // controls exit animation
     const noticeTimeoutRef = useRef(null);
 
@@ -85,8 +86,8 @@ function HeroComponent() {
         });
     }, []);
 
-    const codeRainColumns = useMemo(() => buildRain(24, 34, 50, 2, 6, 18), []);
-    const codeRainColumnsLower = useMemo(() => buildRain(24, 36, 50, 2, 4, 20), []);
+    const codeRainColumns = useMemo(() => buildRain(24, 34, 50, 2, 6, 18), [buildRain]);
+    const codeRainColumnsLower = useMemo(() => buildRain(24, 36, 50, 2, 4, 20), [buildRain]);
 
     const gradientRefs = {
         gradient1: useRef(null),
@@ -95,6 +96,14 @@ function HeroComponent() {
         gradient4: useRef(null),
         gradient5: useRef(null)
     };
+
+    // Detect mobile breakpoint
+    useEffect(() => {
+        const evalMobile = () => setIsMobile(window.innerWidth <= 576);
+        evalMobile();
+        window.addEventListener('resize', evalMobile);
+        return () => window.removeEventListener('resize', evalMobile);
+    }, []);
 
     // Mouse parallax (desktop / tablet only). Disabled on narrow screens (<=576px) to reduce motion.
     useEffect(() => {
@@ -265,16 +274,18 @@ function HeroComponent() {
 
             </div>
 
-            {/* Code rain overlay limited to hero title height */}
-            <div className="code-rain" style={{ '--code-rain-height': `${rainHeight}px` }} aria-hidden>
-                {codeRainColumns.map(col => (
-                    <div key={col.id} className="code-rain__column" style={{ left: `${col.left}%`, animationDuration: `${col.duration}s`, animationDelay: `${col.delay}s` }}>
-                        {col.chars.map(c => (
-                            <span key={c.key} className="code-rain__char" style={c.style}>{c.ch}</span>
-                        ))}
-                    </div>
-                ))}
-            </div>
+            {/* Code rain overlay limited to hero title height (hidden on mobile) */}
+            {!isMobile && (
+                <div className="code-rain" style={{ '--code-rain-height': `${rainHeight}px` }} aria-hidden>
+                    {codeRainColumns.map(col => (
+                        <div key={col.id} className="code-rain__column" style={{ left: `${col.left}%`, animationDuration: `${col.duration}s`, animationDelay: `${col.delay}s` }}>
+                            {col.chars.map(c => (
+                                <span key={c.key} className="code-rain__char" style={c.style}>{c.ch}</span>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            )}
 
             <div className="hero-container">
                 <div className="hero-content">
@@ -315,24 +326,26 @@ function HeroComponent() {
                 </div>
             </div>
 
-            {/* Lower code rain overlay (from social links down) */}
-            <div className="code-rain-lower" style={{ top: `${lowerRainStart}px`, height: `${lowerRainHeight}px` }} aria-hidden>
-                {codeRainColumnsLower.map(col => (
-                    <div
-                        key={col.id}
-                        className="code-rain__column"
-                        style={{
-                            left: `${col.left}%`,
-                            animationDuration: `${col.duration}s`,
-                            animationDelay: `${col.delay}s`
-                        }}
-                    >
-                        {col.chars.map(c => (
-                            <span key={c.key} className="code-rain__char" style={c.style}>{c.ch}</span>
-                        ))}
-                    </div>
-                ))}
-            </div>
+            {/* Lower code rain overlay (hidden on mobile) */}
+            {!isMobile && (
+                <div className="code-rain-lower" style={{ top: `${lowerRainStart}px`, height: `${lowerRainHeight}px` }} aria-hidden>
+                    {codeRainColumnsLower.map(col => (
+                        <div
+                            key={col.id}
+                            className="code-rain__column"
+                            style={{
+                                left: `${col.left}%`,
+                                animationDuration: `${col.duration}s`,
+                                animationDelay: `${col.delay}s`
+                            }}
+                        >
+                            {col.chars.map(c => (
+                                <span key={c.key} className="code-rain__char" style={c.style}>{c.ch}</span>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            )}
 
             <div className="bio-box">
                 <div className="bio-gif-container">

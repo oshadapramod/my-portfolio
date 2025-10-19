@@ -976,7 +976,8 @@
         -webkit-transform: scaleX(-1);
         transform: scaleX(-1);
         display: inline-block;
-        margin-bottom: 120px;
+        margin-bottom: 200px;
+        margin-left: 20px;
     }
 
     /* IMPORTANT: Add diagonal polygon overlay with lower z-index */

@@ -779,14 +779,14 @@
     }
 
     .hero-image {
-        margin-right: 0;
-        margin-top: 50px;
+        margin-right: 200px;
+        margin-top: 10px;
         margin-bottom: 0px;
         /* Added space before bio box */
     }
 
     .hero-image img {
-        width: 500px;
+        width: 380px;
     }
 
     .bio-box {
@@ -833,12 +833,9 @@
     }
 
     .hero-image img {
-        width: 500px;
-    }
-
-    .hero-image {
-        margin-bottom: 0px;
-        /* Added space before bio box */
+        width: 300px;
+        margin-left: 130px;
+        margin-top: -60px;
     }
 
     .bio-box {
@@ -970,8 +967,8 @@
     }
 
     .hero-image img {
-        width: 100%;
-        max-width: 400px;
+        width: 80%;
+        max-width: 300px;
         height: auto;
         object-fit: contain;
         object-position: center center;

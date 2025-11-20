@@ -1,10 +1,10 @@
 /* Unified hero notice style */
-.hero-notice {
+/*.hero-notice {
     position: absolute;
     top: 130px;
     left: 50%;
     transform: translateX(-50%) scale(.9);
-    /* no negative Y to avoid clipping by overflow */
+    /* no negative Y to avoid clipping by overflow 
     display: flex;
     align-items: center;
     gap: 14px;
@@ -36,7 +36,7 @@
     transition: opacity .55s cubic-bezier(.4, 0, .2, 1), transform .55s cubic-bezier(.4, 0, .2, 1);
 }
 
-/* Closing (exit) state triggered before unmount */
+/* Closing (exit) state triggered before unmount 
 .hero-notice.closing {
     opacity: 0;
     transform: translateX(-50%) scale(.85);
@@ -68,7 +68,7 @@
     color: #fffb89;
 }
 
-/* Close button */
+/* Close button 
 .hero-notice__close {
     position: absolute;
     top: 4px;
@@ -105,6 +105,8 @@
     margin-top: -2px;
 }
 
+*/
+
 /* remove close button (legacy styles removed) */
 @keyframes noticeIn {
     from {
@@ -132,8 +134,8 @@
 .hero {
     position: relative;
     width: 100%;
-    height: 982px;
-    /* Increased height to accommodate the bio box */
+    height: 760px;
+    /* Adjusted height after removing bio box */
     overflow: hidden;
     background: #000;
     position: relative;
@@ -298,7 +300,7 @@
 .devops-left {
     position: absolute;
     left: -80px;
-    top: -170px;
+    top: 0;
     bottom: 0;
     width: min(72%, 960px);
     height: 100%;

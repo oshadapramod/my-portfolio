@@ -232,7 +232,7 @@ function HeroComponent() {
     return (
         <section className="hero" id="hero" ref={heroRef}>
             {/* DevOps internship notice popup */}
-            {showNotice && (
+            {/* {showNotice && (
                 <div className={`hero-notice visible${noticeClosing ? ' closing' : ''}`} role="alert" aria-live="assertive">
                     <button
                         type="button"
@@ -245,7 +245,7 @@ function HeroComponent() {
                     <HiMegaphone className="hero-notice__icon" />
                     <span className="hero-notice__text"><span className="hero-notice__highlight">Notice:</span> Actively seeking a DevOps internship — recruiters, let’s talk!</span>
                 </div>
-            )}
+            )} */}
             <div className="hero-background">
                 <div className="devops-left" aria-hidden>
                     <div className="devops-grid" />
@@ -281,7 +281,7 @@ function HeroComponent() {
                         <div key={col.id} className="code-rain__column" style={{ left: `${col.left}%`, animationDuration: `${col.duration}s`, animationDelay: `${col.delay}s` }}>
                             {col.chars.map(c => (
                                 <span key={c.key} className="code-rain__char" style={c.style}>{c.ch}</span>
-                            ))}
+                            ))}K
                         </div>
                     ))}
                 </div>
@@ -347,14 +347,7 @@ function HeroComponent() {
                 </div>
             )}
 
-            <div className="bio-box">
-                <div className="bio-gif-container">
-                    <img src={bioGif} alt="Coding GIF" className="bio-gif" loading="lazy" decoding="async" />
-                </div>
-                <div className="bio-edit-container">
-                    Final-year Computer Engineering undergraduate at the University of Jaffna with practical experience in DevOps, cloud infrastructure (AWS, GCP), and CI/CD pipelines. Skilled in Docker, Kubernetes, Terraform, Jenkins, and GitHub Actions, with a strong foundation in Linux, Bash/Python, and version control. Built and deployed multiple full-stack and cloud-native apps. Strong problem-solving skills with a passion for enhancing automation, reliability, and deployment workflows in DevOps teams.
-                </div>
-            </div>
+
         </section>
     );
 }

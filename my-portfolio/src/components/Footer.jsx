@@ -60,7 +60,7 @@ function FooterComponent() {
                 </div>
 
                 <p className="copyright">
-                    &copy;2025 Oshada Pramod All Rights Reserved.
+                    &copy;2026 Oshada Pramod All Rights Reserved.
                 </p>
             </div>
         </footer>

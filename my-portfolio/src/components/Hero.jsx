@@ -291,7 +291,7 @@ function HeroComponent() {
                 <div className="hero-content">
                     <h2 className="hero-subtitle">Hi, I am</h2>
                     <h1 className="hero-title" ref={heroTitleRef}>Oshada Pramod</h1>
-                    <p className="hero-description">Aspiring DevOps Engineer
+                    <p className="hero-description">Aspiring DevOps / SRE Engineer
                         <br />Computer Engineering Undergraduate
                     </p>
 

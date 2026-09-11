@@ -10,22 +10,31 @@ function ServicesComponent() {
                 </div>
 
                 <p className="section-paragraph">
-                    I'm an enthusiastic and driven undergraduate currently pursuing a <b>BSc. Engineering (Hons) degree,
-                        specializing in Computer Engineering at the Faculty of Engineering, University of Jaffna</b>. Originally from Ratnapura,
-                    I completed my schooling at Sivali Central College, where I followed the Physical Science stream for my Advanced Level studies.
+                    I’m a passionate and motivated <b>Computer Engineer</b> with a strong interest in
+                    <b> DevOps, Cloud Computing, Software Engineering, and Site Reliability Engineering</b>.
+                    I graduated with a <b>BSc. Engineering (Hons) degree in Computer Engineering from the
+                        Faculty of Engineering, University of Jaffna</b>. Originally from Ratnapura, I completed
+                    my schooling at Sivali Central College, where I followed the Physical Science stream for
+                    my Advanced Level studies.
                     <br />
                     <br />
-                    My core interests include <b>DevOps, Cloud Computing, and Software Development</b>. I'm passionate about learning tools like Docker,
-                    GitHub Actions, and Terraform, and I'm eager to gain hands-on experience in CI/CD, automation, and infrastructure as code.
+                    My core interests include <b>DevOps, Cloud Computing, Software Development, and Automation</b>.
+                    I enjoy working with technologies such as Docker, GitHub Actions, Terraform, AWS, Python,
+                    Java, and Linux, while continuously exploring modern approaches to CI/CD, infrastructure
+                    as code, cloud infrastructure, and reliable system design.
                     <br />
                     <br />
-                    In addition to my academic journey, I actively engage in volunteering through <b>IEEE</b>,
-                    where I collaborate with like-minded peers and contribute to impactful tech-driven initiatives.
-                    Outside of my studies, I enjoy playing games, watching TV series, and expressing my creativity through graphic design.
+                    Throughout my academic and professional journey, I have worked on a variety of technical
+                    projects that have strengthened my skills in <b>software development, cloud technologies,
+                        automation, and system reliability</b>. I have also actively participated in
+                    <b> IEEE</b> activities, collaborating with peers and contributing to technology-focused
+                    initiatives and projects.
                     <br />
                     <br />
-                    I’m always eager to take on new challenges, learn emerging technologies,
-                    and be part of meaningful projects that make a difference.
+                    Outside of technology, I enjoy playing games, watching TV series, and expressing my
+                    creativity through graphic design. I’m always eager to take on new challenges, learn
+                    emerging technologies, solve meaningful problems, and contribute to projects that make
+                    a real-world impact.
                 </p>
             </div>
 
